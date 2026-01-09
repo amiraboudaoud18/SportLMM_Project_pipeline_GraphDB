@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns="http://exemple.org/cinema#"
+         xml:base="http://exemple.org/cinema">
+
+  <!-- Déclaration de l'ontologie -->
+  <owl:Ontology rdf:about="http://exemple.org/cinema">
+    <rdfs:label xml:lang="fr">Ontologie de base de données cinéma</rdfs:label>
+    <rdfs:comment xml:lang="fr">Une ontologie simple pour décrire les films, acteurs, réalisateurs et genres</rdfs:comment>
+  </owl:Ontology>
+
+  <!-- Classes -->
+  <owl:Class rdf:about="http://exemple.org/cinema#Film">
+    <rdfs:label xml:lang="fr">Film</rdfs:label>
+    <rdfs:comment xml:lang="fr">Une œuvre cinématographique</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://exemple.org/cinema#Acteur">
+    <rdfs:label xml:lang="fr">Acteur</rdfs:label>
+    <rdfs:comment xml:lang="fr">Une personne qui joue dans des films</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://exemple.org/cinema#Actrice">
+    <rdfs:label xml:lang="fr">Actrice</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://exemple.org/cinema#Acteur"/>
+    <rdfs:comment xml:lang="fr">Une actrice de cinéma</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://exemple.org/cinema#Réalisateur">
+    <rdfs:label xml:lang="fr">Réalisateur</rdfs:label>
+    <rdfs:comment xml:lang="fr">Une personne qui réalise des films</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://exemple.org/cinema#RéalisateurActeur">
+    <rdfs:label xml:lang="fr">Réalisateur-Acteur</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://exemple.org/cinema#Réalisateur"/>
+    <rdfs:subClassOf rdf:resource="http://exemple.org/cinema#Acteur"/>
+    <rdfs:comment xml:lang="fr">Une personne qui est à la fois réalisateur et acteur</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://exemple.org/cinema#Genre">
+    <rdfs:label xml:lang="fr">Genre</rdfs:label>
+    <rdfs:comment xml:lang="fr">Une catégorie de film</rdfs:comment>
+  </owl:Class>
+
+  <!-- Propriétés d'objet (relations) -->
+  <owl:ObjectProperty rdf:about="http://exemple.org/cinema#réaliséPar">
+    <rdfs:label xml:lang="fr">réalisé par</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Film"/>
+    <rdfs:range rdf:resource="http://exemple.org/cinema#Réalisateur"/>
+    <rdfs:comment xml:lang="fr">Relie un film à son réalisateur</rdfs:comment>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://exemple.org/cinema#avecActeur">
+    <rdfs:label xml:lang="fr">avec acteur</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Film"/>
+    <rdfs:range rdf:resource="http://exemple.org/cinema#Acteur"/>
+    <rdfs:comment xml:lang="fr">Relie un film à un acteur qui y joue</rdfs:comment>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://exemple.org/cinema#genre">
+    <rdfs:label xml:lang="fr">genre</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Film"/>
+    <rdfs:range rdf:resource="http://exemple.org/cinema#Genre"/>
+    <rdfs:comment xml:lang="fr">Relie un film à son genre</rdfs:comment>
+  </owl:ObjectProperty>
+
+  <!-- Propriétés de données (attributs) -->
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#titre">
+    <rdfs:label xml:lang="fr">titre</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="fr">Le titre du film</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#annéeSortie">
+    <rdfs:label xml:lang="fr">année de sortie</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+    <rdfs:comment xml:lang="fr">L'année de sortie du film</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#note">
+    <rdfs:label xml:lang="fr">note</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:comment xml:lang="fr">La note du film (ex: note IMDb)</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#durée">
+    <rdfs:label xml:lang="fr">durée</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:comment xml:lang="fr">Durée du film en minutes</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#synopsis">
+    <rdfs:label xml:lang="fr">synopsis</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="fr">Brève description de l'intrigue du film</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#nom">
+    <rdfs:label xml:lang="fr">nom</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="fr">Le nom d'une personne ou d'un genre</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#annéeNaissance">
+    <rdfs:label xml:lang="fr">année de naissance</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+    <rdfs:comment xml:lang="fr">L'année de naissance d'une personne</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#nationalité">
+    <rdfs:label xml:lang="fr">nationalité</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="fr">La nationalité d'une personne</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#récompenses">
+    <rdfs:label xml:lang="fr">récompenses</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="fr">Récompenses remportées par une personne</rdfs:comment>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://exemple.org/cinema#description">
+    <rdfs:label xml:lang="fr">description</rdfs:label>
+    <rdfs:domain rdf:resource="http://exemple.org/cinema#Genre"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="fr">Description du genre</rdfs:comment>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>

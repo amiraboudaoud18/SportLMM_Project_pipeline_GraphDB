@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns="http://exemple.org/cinema#">
+
+  <!-- Films -->
+  <Film rdf:about="http://exemple.org/cinema#LesFabuleux">
+    <titre>Le Fabuleux Destin d'Amélie Poulain</titre>
+    <annéeSortie rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2001</annéeSortie>
+    <genre rdf:resource="http://exemple.org/cinema#Comédie"/>
+    <genre rdf:resource="http://exemple.org/cinema#Romance"/>
+    <réaliséPar rdf:resource="http://exemple.org/cinema#JeanPierreJeunet"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#AudreyTautou"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#MathieuKassovitz"/>
+    <note rdf:datatype="http://www.w3.org/2001/XMLSchema#float">8.3</note>
+    <durée rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">122</durée>
+    <synopsis>Amélie, une jeune serveuse dans un bar de Montmartre, passe son temps à observer les gens et à laisser son imagination divaguer. Elle s'est fixé un but : faire le bien de ceux qui l'entourent.</synopsis>
+  </Film>
+
+  <Film rdf:about="http://exemple.org/cinema#Intouchables">
+    <titre>Intouchables</titre>
+    <annéeSortie rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2011</annéeSortie>
+    <genre rdf:resource="http://exemple.org/cinema#Comédie"/>
+    <genre rdf:resource="http://exemple.org/cinema#Drame"/>
+    <réaliséPar rdf:resource="http://exemple.org/cinema#OlivierNakache"/>
+    <réaliséPar rdf:resource="http://exemple.org/cinema#ÉricToledano"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#FrançoisCluzet"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#OmarSy"/>
+    <note rdf:datatype="http://www.w3.org/2001/XMLSchema#float">8.5</note>
+    <durée rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">112</durée>
+    <synopsis>À la suite d'un accident de parapente, Philippe, riche aristocrate, engage comme aide à domicile Driss, un jeune de banlieue tout juste sorti de prison.</synopsis>
+  </Film>
+
+  <Film rdf:about="http://exemple.org/cinema#LaHaine">
+    <titre>La Haine</titre>
+    <annéeSortie rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1995</annéeSortie>
+    <genre rdf:resource="http://exemple.org/cinema#Drame"/>
+    <réaliséPar rdf:resource="http://exemple.org/cinema#MathieuKassovitz"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#VincentCassel"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#HubertKoundé"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#SaïdTaghmaoui"/>
+    <note rdf:datatype="http://www.w3.org/2001/XMLSchema#float">8.1</note>
+    <durée rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">98</durée>
+    <synopsis>24 heures dans la vie de trois jeunes de banlieue le lendemain d'une émeute.</synopsis>
+  </Film>
+
+  <Film rdf:about="http://exemple.org/cinema#LesPetitsMouchoirs">
+    <titre>Les Petits Mouchoirs</titre>
+    <annéeSortie rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2010</annéeSortie>
+    <genre rdf:resource="http://exemple.org/cinema#Comédie"/>
+    <genre rdf:resource="http://exemple.org/cinema#Drame"/>
+    <réaliséPar rdf:resource="http://exemple.org/cinema#GuillaumeCanet"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#FrançoisCluzet"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#MarionCotillard"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#BenoîtMagimel"/>
+    <note rdf:datatype="http://www.w3.org/2001/XMLSchema#float">7.1</note>
+    <durée rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">154</durée>
+    <synopsis>Suite à un événement bouleversant, une bande de copains décide de partir en vacances malgré tout.</synopsis>
+  </Film>
+
+  <Film rdf:about="http://exemple.org/cinema#LaVieDAdèle">
+    <titre>La Vie d'Adèle</titre>
+    <annéeSortie rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2013</annéeSortie>
+    <genre rdf:resource="http://exemple.org/cinema#Drame"/>
+    <genre rdf:resource="http://exemple.org/cinema#Romance"/>
+    <réaliséPar rdf:resource="http://exemple.org/cinema#AbdellatifKechiche"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#AdèleExarchopoulos"/>
+    <avecActeur rdf:resource="http://exemple.org/cinema#LéaSeydoux"/>
+    <note rdf:datatype="http://www.w3.org/2001/XMLSchema#float">7.7</note>
+    <durée rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180</durée>
+    <synopsis>Une jeune lycéenne découvre le désir et l'amour lors d'une passion naissante et tumultueuse avec une jeune femme aux cheveux bleus.</synopsis>
+  </Film>
+
+  <!-- Réalisateurs -->
+  <Réalisateur rdf:about="http://exemple.org/cinema#JeanPierreJeunet">
+    <nom>Jean-Pierre Jeunet</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1953</annéeNaissance>
+    <nationalité>Français</nationalité>
+    <récompenses>César du meilleur réalisateur</récompenses>
+  </Réalisateur>
+
+  <Réalisateur rdf:about="http://exemple.org/cinema#OlivierNakache">
+    <nom>Olivier Nakache</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1973</annéeNaissance>
+    <nationalité>Français</nationalité>
+  </Réalisateur>
+
+  <Réalisateur rdf:about="http://exemple.org/cinema#ÉricToledano">
+    <nom>Éric Toledano</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1971</annéeNaissance>
+    <nationalité>Français</nationalité>
+  </Réalisateur>
+
+  <RéalisateurActeur rdf:about="http://exemple.org/cinema#MathieuKassovitz">
+    <nom>Mathieu Kassovitz</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1967</annéeNaissance>
+    <nationalité>Français</nationalité>
+    <récompenses>César du meilleur film, César du meilleur montage</récompenses>
+  </RéalisateurActeur>
+
+  <RéalisateurActeur rdf:about="http://exemple.org/cinema#GuillaumeCanet">
+    <nom>Guillaume Canet</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1973</annéeNaissance>
+    <nationalité>Français</nationalité>
+    <récompenses>César du meilleur acteur</récompenses>
+  </RéalisateurActeur>
+
+  <Réalisateur rdf:about="http://exemple.org/cinema#AbdellatifKechiche">
+    <nom>Abdellatif Kechiche</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1960</annéeNaissance>
+    <nationalité>Franco-Tunisien</nationalité>
+    <récompenses>Palme d'Or au Festival de Cannes</récompenses>
+  </Réalisateur>
+
+  <!-- Acteurs -->
+  <Actrice rdf:about="http://exemple.org/cinema#AudreyTautou">
+    <nom>Audrey Tautou</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1976</annéeNaissance>
+    <nationalité>Française</nationalité>
+    <récompenses>César du meilleur espoir féminin</récompenses>
+  </Actrice>
+
+  <Acteur rdf:about="http://exemple.org/cinema#FrançoisCluzet">
+    <nom>François Cluzet</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1955</annéeNaissance>
+    <nationalité>Français</nationalité>
+    <récompenses>César du meilleur acteur</récompenses>
+  </Acteur>
+
+  <Acteur rdf:about="http://exemple.org/cinema#OmarSy">
+    <nom>Omar Sy</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1978</annéeNaissance>
+    <nationalité>Français</nationalité>
+    <récompenses>César du meilleur acteur</récompenses>
+  </Acteur>
+
+  <Acteur rdf:about="http://exemple.org/cinema#VincentCassel">
+    <nom>Vincent Cassel</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1966</annéeNaissance>
+    <nationalité>Français</nationalité>
+    <récompenses>César du meilleur acteur</récompenses>
+  </Acteur>
+
+  <Actrice rdf:about="http://exemple.org/cinema#MarionCotillard">
+    <nom>Marion Cotillard</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1975</annéeNaissance>
+    <nationalité>Française</nationalité>
+    <récompenses>Oscar de la meilleure actrice, César de la meilleure actrice</récompenses>
+  </Actrice>
+
+  <Actrice rdf:about="http://exemple.org/cinema#AdèleExarchopoulos">
+    <nom>Adèle Exarchopoulos</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1993</annéeNaissance>
+    <nationalité>Française</nationalité>
+    <récompenses>Palme d'Or au Festival de Cannes</récompenses>
+  </Actrice>
+
+  <Actrice rdf:about="http://exemple.org/cinema#LéaSeydoux">
+    <nom>Léa Seydoux</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1985</annéeNaissance>
+    <nationalité>Française</nationalité>
+    <récompenses>Palme d'Or au Festival de Cannes, César de la meilleure actrice</récompenses>
+  </Actrice>
+
+  <Acteur rdf:about="http://exemple.org/cinema#HubertKoundé">
+    <nom>Hubert Koundé</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1964</annéeNaissance>
+    <nationalité>Français</nationalité>
+  </Acteur>
+
+  <Acteur rdf:about="http://exemple.org/cinema#SaïdTaghmaoui">
+    <nom>Saïd Taghmaoui</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1973</annéeNaissance>
+    <nationalité>Français</nationalité>
+  </Acteur>
+
+  <Acteur rdf:about="http://exemple.org/cinema#BenoîtMagimel">
+    <nom>Benoît Magimel</nom>
+    <annéeNaissance rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1974</annéeNaissance>
+    <nationalité>Français</nationalité>
+    <récompenses>César du meilleur acteur</récompenses>
+  </Acteur>
+
+  <!-- Genres -->
+  <Genre rdf:about="http://exemple.org/cinema#Comédie">
+    <nom>Comédie</nom>
+    <description>Films destinés à faire rire le spectateur</description>
+  </Genre>
+
+  <Genre rdf:about="http://exemple.org/cinema#Drame">
+    <nom>Drame</nom>
+    <description>Films sérieux traitant de situations réalistes et émotionnelles</description>
+  </Genre>
+
+  <Genre rdf:about="http://exemple.org/cinema#Romance">
+    <nom>Romance</nom>
+    <description>Films centrés sur des histoires d'amour</description>
+  </Genre>
+
+</rdf:RDF>
