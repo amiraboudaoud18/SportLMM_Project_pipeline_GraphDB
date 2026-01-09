@@ -30,3 +30,4 @@ logs/
 
 .DS_Store*.gguf
 experiments/**/models/
+.DS_Store
