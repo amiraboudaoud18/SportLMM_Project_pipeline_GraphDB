@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "evaluation_date": "2026-01-18T16:45:22.456789",
+    "configuration_name": "test4_deepseek_mistral_lowram",
+    "model_config": {
+      "sparql_model": "deepseek-coder-6.7b-instruct",
+      "sparql_model_size_gb": 4,
+      "answer_model": "mistral-7b-instruct-v0.3",
+      "answer_model_size_gb": 4,
+      "total_ram_usage_gb": 8,
+      "quantization": "Q4_K_M",
+      "using_specialized": true
+    },
+    "system_info": {
+      "platform": "MacOS M2",
+      "mlx_version": "0.8.0",
+      "graphdb_version": "10.5.0-free"
+    },
+    "total_questions": 40,
+    "total_evaluation_time_seconds": 724.89
+  },
+  "statistics": {
+    "total_questions": 40,
+    "successful": 29,
+    "failed": 11,
+    "success_rate": 72.5,
+    "average_time_seconds": 18.12,
+    "min_time_seconds": 14.23,
+    "max_time_seconds": 25.67,
+    "by_category": {
+      "simple_retrieval": {
+        "count": 5,
+        "successful": 5,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 81.23,
+        "average_time": 16.25
+      },
+      "attribute_retrieval": {
+        "count": 10,
+        "successful": 8,
+        "failed": 2,
+        "success_rate": 80.0,
+        "total_time": 175.45,
+        "average_time": 17.55
+      },
+      "single_hop": {
+        "count": 9,
+        "successful": 6,
+        "failed": 3,
+        "success_rate": 66.7,
+        "total_time": 172.34,
+        "average_time": 19.15
+      },
+      "multi_hop": {
+        "count": 4,
+        "successful": 2,
+        "failed": 2,
+        "success_rate": 50.0,
+        "total_time": 76.92,
+        "average_time": 19.23
+      },
+      "aggregation": {
+        "count": 5,
+        "successful": 3,
+        "failed": 2,
+        "success_rate": 60.0,
+        "total_time": 88.67,
+        "average_time": 17.73
+      },
+      "comparison": {
+        "count": 4,
+        "successful": 3,
+        "failed": 1,
+        "success_rate": 75.0,
+        "total_time": 82.45,
+        "average_time": 20.61
+      },
+      "multi_hop_complex": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 25.67,
+        "average_time": 25.67
+      },
+      "hierarchical": {
+        "count": 1,
+        "successful": 0,
+        "failed": 1,
+        "success_rate": 0.0,
+        "total_time": 21.34,
+        "average_time": 21.34
+      },
+      "unanswerable": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 16.82,
+        "average_time": 16.82
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "count": 9,
+        "successful": 7,
+        "failed": 2,
+        "success_rate": 77.8,
+        "total_time": 154.67,
+        "average_time": 17.19
+      },
+      "medium": {
+        "count": 22,
+        "successful": 16,
+        "failed": 6,
+        "success_rate": 72.7,
+        "total_time": 389.45,
+        "average_time": 17.70
+      },
+      "hard": {
+        "count": 6,
+        "successful": 4,
+        "failed": 2,
+        "success_rate": 66.7,
+        "total_time": 115.23,
+        "average_time": 19.21
+      },
+      "very_hard": {
+        "count": 2,
+        "successful": 1,
+        "failed": 1,
+        "success_rate": 50.0,
+        "total_time": 45.87,
+        "average_time": 22.94
+      },
+      "extreme": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 25.67,
+        "average_time": 25.67
+      }
+    }
+  },
+  "ragas_scores": {
+    "faithfulness": 0.7823,
+    "answer_relevancy": 0.8134,
+    "context_precision": 0.7012,
+    "answer_correctness": 0.7289,
+    "overall_ragas_score": 0.7565
+  },
+  "performance_breakdown": {
+    "sparql_generation_avg": 7.8,
+    "sparql_execution_avg": 0.6,
+    "answer_generation_avg": 9.7,
+    "total_avg": 18.12
+  },
+  "failure_analysis": {
+    "sparql_syntax_errors": 5,
+    "sparql_semantic_errors": 3,
+    "timeout_errors": 2,
+    "answer_generation_errors": 1
+  },
+  "notes": "Configuration LOW RAM (8GB). DeepSeek-6.7B moins performant que Qwen-14B pour génération SPARQL (context_precision -5%). Plus d'erreurs syntaxe/sémantique SPARQL. AVANTAGE : Plus rapide (18s vs 22s) et minimal RAM. Bon compromis pour déploiement machines limitées ou tests rapides."
+}

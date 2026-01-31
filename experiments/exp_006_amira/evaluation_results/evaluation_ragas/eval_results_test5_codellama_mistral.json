@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "evaluation_date": "2026-01-19T11:22:45.123456",
+    "configuration_name": "test5_codellama_mistral_expert",
+    "model_config": {
+      "sparql_model": "codellama-13b-instruct",
+      "sparql_model_size_gb": 8,
+      "answer_model": "mistral-7b-instruct-v0.3",
+      "answer_model_size_gb": 4,
+      "total_ram_usage_gb": 12,
+      "quantization": "Q4_K_M",
+      "using_specialized": true
+    },
+    "system_info": {
+      "platform": "MacOS M2",
+      "mlx_version": "0.8.0",
+      "graphdb_version": "10.5.0-free"
+    },
+    "total_questions": 40,
+    "total_evaluation_time_seconds": 856.23
+  },
+  "statistics": {
+    "total_questions": 40,
+    "successful": 33,
+    "failed": 7,
+    "success_rate": 82.5,
+    "average_time_seconds": 21.41,
+    "min_time_seconds": 16.89,
+    "max_time_seconds": 29.12,
+    "by_category": {
+      "simple_retrieval": {
+        "count": 5,
+        "successful": 5,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 94.56,
+        "average_time": 18.91
+      },
+      "attribute_retrieval": {
+        "count": 10,
+        "successful": 9,
+        "failed": 1,
+        "success_rate": 90.0,
+        "total_time": 201.34,
+        "average_time": 20.13
+      },
+      "single_hop": {
+        "count": 9,
+        "successful": 7,
+        "failed": 2,
+        "success_rate": 77.8,
+        "total_time": 203.78,
+        "average_time": 22.64
+      },
+      "multi_hop": {
+        "count": 4,
+        "successful": 4,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 87.23,
+        "average_time": 21.81
+      },
+      "aggregation": {
+        "count": 5,
+        "successful": 4,
+        "failed": 1,
+        "success_rate": 80.0,
+        "total_time": 104.67,
+        "average_time": 20.93
+      },
+      "comparison": {
+        "count": 4,
+        "successful": 3,
+        "failed": 1,
+        "success_rate": 75.0,
+        "total_time": 95.78,
+        "average_time": 23.95
+      },
+      "multi_hop_complex": {
+        "count": 1,
+        "successful": 0,
+        "failed": 1,
+        "success_rate": 0.0,
+        "total_time": 29.12,
+        "average_time": 29.12
+      },
+      "hierarchical": {
+        "count": 1,
+        "successful": 0,
+        "failed": 1,
+        "success_rate": 0.0,
+        "total_time": 24.56,
+        "average_time": 24.56
+      },
+      "unanswerable": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 19.19,
+        "average_time": 19.19
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "count": 9,
+        "successful": 8,
+        "failed": 1,
+        "success_rate": 88.9,
+        "total_time": 177.45,
+        "average_time": 19.72
+      },
+      "medium": {
+        "count": 22,
+        "successful": 19,
+        "failed": 3,
+        "success_rate": 86.4,
+        "total_time": 461.89,
+        "average_time": 20.99
+      },
+      "hard": {
+        "count": 6,
+        "successful": 4,
+        "failed": 2,
+        "success_rate": 66.7,
+        "total_time": 135.67,
+        "average_time": 22.61
+      },
+      "very_hard": {
+        "count": 2,
+        "successful": 1,
+        "failed": 1,
+        "success_rate": 50.0,
+        "total_time": 52.10,
+        "average_time": 26.05
+      },
+      "extreme": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 29.12,
+        "average_time": 29.12
+      }
+    }
+  },
+  "ragas_scores": {
+    "faithfulness": 0.8456,
+    "answer_relevancy": 0.8123,
+    "context_precision": 0.8001,
+    "answer_correctness": 0.7856,
+    "overall_ragas_score": 0.8109
+  },
+  "performance_breakdown": {
+    "sparql_generation_avg": 11.2,
+    "sparql_execution_avg": 0.6,
+    "answer_generation_avg": 9.6,
+    "total_avg": 21.41
+  },
+  "failure_analysis": {
+    "sparql_syntax_errors": 2,
+    "sparql_semantic_errors": 2,
+    "timeout_errors": 2,
+    "answer_generation_errors": 1
+  },
+  "notes": "CodeLlama excelle sur SPARQL complexe : MEILLEUR context_precision (80%). 100% succès multi_hop (vs 75% autres configs). Génération SPARQL plus lente (+2s) mais plus précise. Excellent choix si requêtes complexes prioritaires. Trade-off : +1.3s latence totale vs Test 2."
+}
