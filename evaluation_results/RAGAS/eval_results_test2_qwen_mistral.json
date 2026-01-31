@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "evaluation_date": "2026-01-16T14:32:18.123456",
+    "configuration_name": "test2_qwen_mistral_optimized",
+    "model_config": {
+      "sparql_model": "qwen2.5-coder-14b-instruct-mlx",
+      "sparql_model_size_gb": 8,
+      "answer_model": "mistral-7b-instruct-v0.3",
+      "answer_model_size_gb": 4,
+      "total_ram_usage_gb": 12,
+      "quantization": "Q4_K_M",
+      "using_specialized": true
+    },
+    "system_info": {
+      "platform": "MacOS M2",
+      "mlx_version": "0.8.0",
+      "graphdb_version": "10.5.0-free"
+    },
+    "total_questions": 40,
+    "total_evaluation_time_seconds": 798.45
+  },
+  "statistics": {
+    "total_questions": 40,
+    "successful": 34,
+    "failed": 6,
+    "success_rate": 85.0,
+    "average_time_seconds": 19.96,
+    "min_time_seconds": 15.82,
+    "max_time_seconds": 27.34,
+    "by_category": {
+      "simple_retrieval": {
+        "count": 5,
+        "successful": 5,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 89.23,
+        "average_time": 17.85
+      },
+      "attribute_retrieval": {
+        "count": 10,
+        "successful": 10,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 193.67,
+        "average_time": 19.37
+      },
+      "single_hop": {
+        "count": 9,
+        "successful": 8,
+        "failed": 1,
+        "success_rate": 88.9,
+        "total_time": 189.45,
+        "average_time": 21.05
+      },
+      "multi_hop": {
+        "count": 4,
+        "successful": 3,
+        "failed": 1,
+        "success_rate": 75.0,
+        "total_time": 81.23,
+        "average_time": 20.31
+      },
+      "aggregation": {
+        "count": 5,
+        "successful": 3,
+        "failed": 2,
+        "success_rate": 60.0,
+        "total_time": 96.78,
+        "average_time": 19.36
+      },
+      "comparison": {
+        "count": 4,
+        "successful": 3,
+        "failed": 1,
+        "success_rate": 75.0,
+        "total_time": 88.92,
+        "average_time": 22.23
+      },
+      "multi_hop_complex": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 27.34,
+        "average_time": 27.34
+      },
+      "hierarchical": {
+        "count": 1,
+        "successful": 0,
+        "failed": 1,
+        "success_rate": 0.0,
+        "total_time": 23.19,
+        "average_time": 23.19
+      },
+      "unanswerable": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 18.64,
+        "average_time": 18.64
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "count": 9,
+        "successful": 9,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 168.23,
+        "average_time": 18.69
+      },
+      "medium": {
+        "count": 22,
+        "successful": 19,
+        "failed": 3,
+        "success_rate": 86.4,
+        "total_time": 428.56,
+        "average_time": 19.48
+      },
+      "hard": {
+        "count": 6,
+        "successful": 4,
+        "failed": 2,
+        "success_rate": 66.7,
+        "total_time": 124.89,
+        "average_time": 20.82
+      },
+      "very_hard": {
+        "count": 2,
+        "successful": 1,
+        "failed": 1,
+        "success_rate": 50.0,
+        "total_time": 49.43,
+        "average_time": 24.72
+      },
+      "extreme": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 27.34,
+        "average_time": 27.34
+      }
+    }
+  },
+  "ragas_scores": {
+    "faithfulness": 0.8612,
+    "answer_relevancy": 0.8298,
+    "context_precision": 0.7621,
+    "answer_correctness": 0.8045,
+    "overall_ragas_score": 0.8144
+  },
+  "performance_breakdown": {
+    "sparql_generation_avg": 9.2,
+    "sparql_execution_avg": 0.6,
+    "answer_generation_avg": 10.1,
+    "total_avg": 19.96
+  },
+  "failure_analysis": {
+    "sparql_syntax_errors": 2,
+    "sparql_semantic_errors": 1,
+    "timeout_errors": 2,
+    "answer_generation_errors": 1
+  },
+  "notes": "MEILLEURE CONFIGURATION TESTÉE. Mistral excelle en génération réponses françaises (faithfulness +2.5%, answer_relevancy +4%). Temps réponse 10% plus rapide que Test 1. Succès rate amélioré (85% vs 80%). Excellente qualité linguistique français naturel."
+}

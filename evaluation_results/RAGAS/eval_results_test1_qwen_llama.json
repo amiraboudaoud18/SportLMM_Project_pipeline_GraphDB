@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "evaluation_date": "2026-01-15T12:27:46.544111",
+    "configuration_name": "test1_qwen_llama_baseline",
+    "model_config": {
+      "sparql_model": "qwen2.5-coder-14b-instruct-mlx",
+      "sparql_model_size_gb": 8,
+      "answer_model": "meta-llama-3.1-8b-instruct",
+      "answer_model_size_gb": 5,
+      "total_ram_usage_gb": 13,
+      "quantization": "Q4_K_M",
+      "using_specialized": true
+    },
+    "system_info": {
+      "platform": "MacOS M2",
+      "mlx_version": "0.8.0",
+      "graphdb_version": "10.5.0-free"
+    },
+    "total_questions": 40,
+    "total_evaluation_time_seconds": 883.02
+  },
+  "statistics": {
+    "total_questions": 40,
+    "successful": 32,
+    "failed": 8,
+    "success_rate": 80.0,
+    "average_time_seconds": 22.08,
+    "min_time_seconds": 17.36,
+    "max_time_seconds": 30.62,
+    "by_category": {
+      "simple_retrieval": {
+        "count": 5,
+        "successful": 5,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 99.54,
+        "average_time": 19.91
+      },
+      "attribute_retrieval": {
+        "count": 10,
+        "successful": 9,
+        "failed": 1,
+        "success_rate": 90.0,
+        "total_time": 205.00,
+        "average_time": 20.50
+      },
+      "single_hop": {
+        "count": 9,
+        "successful": 7,
+        "failed": 2,
+        "success_rate": 77.8,
+        "total_time": 211.81,
+        "average_time": 23.53
+      },
+      "multi_hop": {
+        "count": 4,
+        "successful": 3,
+        "failed": 1,
+        "success_rate": 75.0,
+        "total_time": 89.07,
+        "average_time": 22.27
+      },
+      "aggregation": {
+        "count": 5,
+        "successful": 3,
+        "failed": 2,
+        "success_rate": 60.0,
+        "total_time": 102.11,
+        "average_time": 20.42
+      },
+      "comparison": {
+        "count": 4,
+        "successful": 3,
+        "failed": 1,
+        "success_rate": 75.0,
+        "total_time": 98.92,
+        "average_time": 24.73
+      },
+      "multi_hop_complex": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 30.54,
+        "average_time": 30.54
+      },
+      "hierarchical": {
+        "count": 1,
+        "successful": 0,
+        "failed": 1,
+        "success_rate": 0.0,
+        "total_time": 25.33,
+        "average_time": 25.33
+      },
+      "unanswerable": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 20.68,
+        "average_time": 20.68
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "count": 9,
+        "successful": 8,
+        "failed": 1,
+        "success_rate": 88.9,
+        "total_time": 186.89,
+        "average_time": 20.77
+      },
+      "medium": {
+        "count": 22,
+        "successful": 18,
+        "failed": 4,
+        "success_rate": 81.8,
+        "total_time": 477.39,
+        "average_time": 21.70
+      },
+      "hard": {
+        "count": 6,
+        "successful": 4,
+        "failed": 2,
+        "success_rate": 66.7,
+        "total_time": 133.06,
+        "average_time": 22.18
+      },
+      "very_hard": {
+        "count": 2,
+        "successful": 1,
+        "failed": 1,
+        "success_rate": 50.0,
+        "total_time": 55.13,
+        "average_time": 27.56
+      },
+      "extreme": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 30.54,
+        "average_time": 30.54
+      }
+    }
+  },
+  "ragas_scores": {
+    "faithfulness": 0.8346,
+    "answer_relevancy": 0.7900,
+    "context_precision": 0.7543,
+    "answer_correctness": 0.7612,
+    "overall_ragas_score": 0.7850
+  },
+  "performance_breakdown": {
+    "sparql_generation_avg": 9.5,
+    "sparql_execution_avg": 0.7,
+    "answer_generation_avg": 11.8,
+    "total_avg": 22.08
+  },
+  "failure_analysis": {
+    "sparql_syntax_errors": 3,
+    "sparql_semantic_errors": 2,
+    "timeout_errors": 2,
+    "answer_generation_errors": 1
+  },
+  "notes": "Configuration baseline avec Qwen pour SPARQL (excellent pour code structuré) et LLaMA pour génération réponses. Performance solide mais temps réponse élevé comparé à pipeline Neo4j (22s vs 3s). Échecs principalement sur requêtes aggregation et hierarchical."
+}

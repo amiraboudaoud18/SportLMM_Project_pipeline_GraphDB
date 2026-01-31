@@ -1,7 +1,10 @@
 # Data files (if large)
 *.csv
-*.json
 *.parquet
+# Allow evaluation result JSONs 
+!code/evaluation_results/*.json
+!evaluation_results/*.json
+!evaluation_results/RAGAS/*.json
 data/raw/*
 !data/raw/.gitkeep
 

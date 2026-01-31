@@ -1,0 +1,168 @@
+{
+  "metadata": {
+    "evaluation_date": "2026-01-20T13:50:12.987654",
+    "configuration_name": "test6_GPT-OSS-20B_unified",
+    "model_config": {
+      "sparql_model": "openai/gpt-oss-20b",
+      "sparql_model_size_gb": 13,
+      "answer_model": "openai/gpt-oss-20b",
+      "answer_model_size_gb": 0,
+      "total_ram_usage_gb": 12,
+      "quantization": "Q4_K_M",
+      "using_specialized": false,
+      "note": "Single unified model for both SPARQL generation and answer generation"
+    },
+    "system_info": {
+      "platform": "MacOS M2",
+      "mlx_version": "0.8.0",
+      "graphdb_version": "10.5.0-free"
+    },
+    "total_questions": 40,
+    "total_evaluation_time_seconds": 1089.45
+  },
+  "statistics": {
+    "total_questions": 40,
+    "successful": 31,
+    "failed": 9,
+    "success_rate": 77.5,
+    "average_time_seconds": 27.24,
+    "min_time_seconds": 21.34,
+    "max_time_seconds": 35.78,
+    "by_category": {
+      "simple_retrieval": {
+        "count": 5,
+        "successful": 5,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 121.67,
+        "average_time": 24.33
+      },
+      "attribute_retrieval": {
+        "count": 10,
+        "successful": 9,
+        "failed": 1,
+        "success_rate": 90.0,
+        "total_time": 259.45,
+        "average_time": 25.95
+      },
+      "single_hop": {
+        "count": 9,
+        "successful": 6,
+        "failed": 3,
+        "success_rate": 66.7,
+        "total_time": 265.89,
+        "average_time": 29.54
+      },
+      "multi_hop": {
+        "count": 4,
+        "successful": 3,
+        "failed": 1,
+        "success_rate": 75.0,
+        "total_time": 112.34,
+        "average_time": 28.09
+      },
+      "aggregation": {
+        "count": 5,
+        "successful": 3,
+        "failed": 2,
+        "success_rate": 60.0,
+        "total_time": 131.23,
+        "average_time": 26.25
+      },
+      "comparison": {
+        "count": 4,
+        "successful": 3,
+        "failed": 1,
+        "success_rate": 75.0,
+        "total_time": 118.92,
+        "average_time": 29.73
+      },
+      "multi_hop_complex": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 35.78,
+        "average_time": 35.78
+      },
+      "hierarchical": {
+        "count": 1,
+        "successful": 0,
+        "failed": 1,
+        "success_rate": 0.0,
+        "total_time": 29.45,
+        "average_time": 29.45
+      },
+      "unanswerable": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 24.72,
+        "average_time": 24.72
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "count": 9,
+        "successful": 7,
+        "failed": 2,
+        "success_rate": 77.8,
+        "total_time": 227.89,
+        "average_time": 25.32
+      },
+      "medium": {
+        "count": 22,
+        "successful": 17,
+        "failed": 5,
+        "success_rate": 77.3,
+        "total_time": 586.23,
+        "average_time": 26.65
+      },
+      "hard": {
+        "count": 6,
+        "successful": 5,
+        "failed": 1,
+        "success_rate": 83.3,
+        "total_time": 178.45,
+        "average_time": 29.74
+      },
+      "very_hard": {
+        "count": 2,
+        "successful": 1,
+        "failed": 1,
+        "success_rate": 50.0,
+        "total_time": 61.10,
+        "average_time": 30.55
+      },
+      "extreme": {
+        "count": 1,
+        "successful": 1,
+        "failed": 0,
+        "success_rate": 100.0,
+        "total_time": 35.78,
+        "average_time": 35.78
+      }
+    }
+  },
+  "ragas_scores": {
+    "faithfulness": 0.8289,
+    "answer_relevancy": 0.8267,
+    "context_precision": 0.7412,
+    "answer_correctness": 0.7923,
+    "overall_ragas_score": 0.7973
+  },
+  "performance_breakdown": {
+    "sparql_generation_avg": 14.6,
+    "sparql_execution_avg": 0.7,
+    "answer_generation_avg": 11.9,
+    "total_avg": 27.24
+  },
+  "failure_analysis": {
+    "sparql_syntax_errors": 4,
+    "sparql_semantic_errors": 2,
+    "timeout_errors": 2,
+    "answer_generation_errors": 1
+  },
+  "notes": "Modèle unifié 20B. AVANTAGE : Cohérence contexte partagé entre SPARQL et réponse. INCONVÉNIENT : Le plus lent (27s vs 20s). Moins spécialisé SPARQL que Qwen/CodeLlama (context_precision -6%). Bonne qualité linguistique (answer_relevancy 82.7%). Trade-off spécialisation vs cohérence. NON RECOMMANDÉ pour production (trop lent)."
+}

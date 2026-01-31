@@ -1,0 +1,579 @@
+{
+  "metadata": {
+    "generation_date": "2026-01-15T15:51:58.988607",
+    "total_questions": 40,
+    "dataset_version": "2.1_corrected",
+    "model_config": {
+      "sparql_model": "qwen2.5-coder-14b-instruct-mlx",
+      "answer_model": "meta-llama-3.1-8b-instruct"
+    },
+    "statistics": {
+      "total_questions": 40,
+      "successful": 40,
+      "failed": 0,
+      "success_rate": 100.0
+    }
+  },
+  "responses": [
+    {
+      "question_id": "Q1",
+      "question": "Quels sont les noms des chevaux dans le système ?",
+      "ground_truth": "Les chevaux dans le système sont Dakota et Naya.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "Les noms des chevaux dans le système sont :\n\n* Dakota\n* Naya\n\nCes deux chevaux sont présents dans la base de données du système.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?horseName\nWHERE {\n  ?horse rdf:type horses:Horse .\n  OPTIONAL { ?horse horses:hasName ?horseName . }\n}",
+        "results_count": 6,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q2",
+      "question": "Quelle est la race de Dakota ?",
+      "ground_truth": "Dakota est un cheval de race Selle Français.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "La race de Dakota est connue.\n\n* La race de Dakota est le Selle Français.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?race\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Dakota\" .\n  OPTIONAL { ?horse horses:hasRace ?race . }\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q3",
+      "question": "Quelle est la race de Naya ?",
+      "ground_truth": "Naya est un cheval de race Anglo-Arabe.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "La race de Naya est connue.\n\n* La race de Naya est l'Anglo-Arabe (propriété hasRace).",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?race\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Naya\" .\n  OPTIONAL { ?horse horses:hasRace ?race . }\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q4",
+      "question": "Dans quels événements sportifs Dakota participe-t-il ?",
+      "ground_truth": "Dakota participe à deux événements sportifs : Event_SJ_01 (saut d'obstacles) et Event_Dressage_01 (dressage).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Dakota participe à plusieurs événements sportifs équestres. Voici les détails :\n\n1. **Saut d'obstacles** : Dakota participe à l'événement de saut d'obstacles (Event_SJ_2026_01) et à l'événement de saut d'obstacles (Event_SJ_01).\n2. **Dressage** : Dakota participe au dressage (Event_Dressage_2026_01) et au dressage (Event_Dressage_01).\n3. **Cross-country** : Dakota participe à la cross-country (Event_Cross_2026_01).\n\nCes informations sont basées sur les 5 événements sportifs enregistrés dans le contexte fourni.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?event ?eventName\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Dakota\" .\n  ?horse horses:CompetesIn ?event .\n  OPTIONAL { ?event horses:hasName ?eventName . }\n}",
+        "results_count": 5,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q5",
+      "question": "Quelles étapes d'entraînement Dakota suit-il ?",
+      "ground_truth": "Dakota suit deux étapes d'entraînement : Training_Prepa_SJ_01 (préparation) et Training_PreComp_SJ_01 (pré-compétition).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Dakota suit plusieurs étapes d'entraînement pour améliorer ses compétences en saut d'obstacles.\n\nVoici les différentes étapes d'entraînement suivies par Dakota :\n\n1. **Phase de préparation** (Training_Preparation_SJ_01) : \n   - Fréquence : 4 séances par semaine\n   - Intensité : Modérée\n   - Durée : 45 minutes\n\n2. **Phase de pré-compétition** (Training_PreCompetition_SJ_01 et Training_PreComp_SJ_01) :\n   - Fréquence : 3 séances par semaine pour la première, intensité non spécifiée mais mentionné comme étant une phase de pré-compétition\n   - Intensité : Élevée pour la deuxième\n\n3. **Phase de compétition** (Training_Competition_SJ_01) :\n   - Fréquence : 1 séance par semaine\n   - Intensité : Peak\n   - Durée : 30 minutes\n\n4. **Transition** (Training_Transition_SJ_01) :\n   - Fréquence : 2 séances par semaine\n   - Intensité : Faible\n\n5. **Phase de préparation spécifique** (Training_Prepa_SJ_01) :\n   - Intensité : Modérée",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?training ?frequency ?intensity ?volume\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Dakota\" .\n  ?horse horses:TrainsIn ?training .\n  ?training rdf:type horses:Training .\n  OPTIONAL { ?training horses:Frequency ?frequency . }\n  OPTIONAL { ?training horses:Intensity ?intensity . }\n  OPTIONAL { ?training horses:Volume ?volume . }\n}",
+        "results_count": 6,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q6",
+      "question": "Quelle est la fréquence d'entraînement pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, la fréquence d'entraînement est de 4 séances par semaine.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "La fréquence d'entraînement pendant la phase de préparation est de 4 séances par semaine.\n\nEn effet, deux programmes d'entraînement sont définis pour cette phase :\n\n1. Training_Preparation_SJ_01 avec une fréquence de 4 séances par semaine\n2. Training_Prepa_SJ_01 (fréquence non spécifiée)\n\nIl est à noter que la fréquence n'est mentionnée que pour le premier programme d'entraînement, et pas pour le deuxième.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?training ?frequency\nWHERE {\n  ?training rdf:type horses:PreparationStage .\n  ?training horses:Frequency ?frequency .\n}",
+        "results_count": 2,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+     {
+      "question_id": "Q7",
+      "question": "Quelle est l'intensité d'entraînement durant la phase pré-compétition ?",
+      "ground_truth": "Durant la phase pré-compétition, l'intensité d'entraînement est élevée.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "L'intensité d'entraînement durant la phase pré-compétition est élevée.\n\nVoici les détails :\n\n* Élevée (Résultat 2)\n* Haute (Résultat 1)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?intensity\nWHERE {\n  ?training rdf:type horses:PreCompetitionStage .\n  ?training horses:Intensity ?intensity .\n}",
+        "results_count": 2,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q8",
+      "question": "Quelle est la durée des séances pendant la phase de préparation ?",
+      "ground_truth": "Pendant la phase de préparation, les séances durent 45 minutes.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "La durée des séances pendant la phase de préparation est de 45 minutes.\n\nEn effet, les deux instances de PreparationStage ont une propriété Volume définie comme suit :\n\n- Résultat 1 : 45min\n- Résultat 2 : 45min",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?duration\nWHERE {\n  ?training rdf:type horses:PreparationStage .\n  ?training horses:Volume ?duration .\n}",
+        "results_count": 2,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q9",
+      "question": "Quelle est la durée des séances pendant la phase pré-compétition ?",
+      "ground_truth": "Pendant la phase pré-compétition, les séances durent 60 minutes.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "La durée des séances pendant la phase pré-compétition est de 60 minutes.\n\nVoici les détails :\n\n* La durée de chaque séance est fixée à 60 minutes.\n* Il n'y a pas d'autres informations disponibles sur la durée des séances pendant cette phase.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?duration\nWHERE {\n  ?training rdf:type horses:PreCompetitionStage .\n  ?training horses:Volume ?duration .\n}",
+        "results_count": 2,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q10",
+      "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
+      "ground_truth": "Les deux étapes d'entraînement de Dakota (préparation et pré-compétition) dépendent de l'événement de saut d'obstacles Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "chatbot_response": {
+        "answer": "Je suis désolé, mais je n'ai pas trouvé d'informations dans le graphe de connaissances qui déterminent les étapes d'entraînement de Dakota.\n\nIl est possible que ces informations n'aient pas encore été ajoutées à la base de données ou qu'elles ne soient pas disponibles. Si vous avez besoin d'informations sur un autre sujet, je serais ravi de l'aider !",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?event\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Dakota\" .\n  ?training rdf:type horses:Training .\n  ?training horses:TrainsIn ?event .\n  ?training horses:involvesActor ?actor .\n  ?actor horses:AssociatedWith ?horse .\n}",
+        "results_count": 0,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q11",
+      "question": "Combien de capteurs IMU sont attachés à Dakota ?",
+      "ground_truth": "4 capteurs IMU sont attachés à Dakota.",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Dakota a un total de 4 capteurs IMU attachés.\n\nVoici les informations détaillées :\n\n* Nombre de capteurs IMU : 4\n* (Aucune information supplémentaire n'est disponible sur ces capteurs)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT (COUNT(?sensor) AS ?count)\nWHERE {\n  ?horse horses:hasName \"Dakota\" .\n  ?sensor rdf:type horses:InertialSensors .\n  ?sensor horses:isAttachedTo ?horse .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q12",
+      "question": "Quels sont les identifiants des capteurs IMU ?",
+      "ground_truth": "Les identifiants des capteurs IMU sont : IMU-W-001, IMU-CF-002, IMU-CH-003 et IMU-ST-004.",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Les identifiants des capteurs IMU sont :\n\n* SI-001523\n* IMU-W-001\n* IMU-CF-002\n* IMU-CH-003\n* IMU-ST-004\n\nCes identifiants correspondent à différents types de capteurs IMU (inertial measurement units) qui enregistrent les données de mouvement et d'orientation.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?sensorID\nWHERE {\n  ?sensor rdf:type horses:InertialSensors .\n  ?sensor horses:hasSensorID ?sensorID .\n}",
+        "results_count": 5,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q13",
+      "question": "À quelles positions anatomiques les capteurs IMU sont-ils placés sur Dakota ?",
+      "ground_truth": "Les capteurs IMU sont placés à 4 positions : garrot (Withers), canon antérieur (CanonOfForelimb), canon postérieur (CanonOfHindlimb) et sternum (Sternum).",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "chatbot_response": {
+        "answer": "Je ne peux pas fournir d'informations sur les positions anatomiques des capteurs IMU attachés au cheval nommé Dakota car le contexte fourni n'en contient pas suffisamment.\n\nCependant, je peux vous dire qu'il y a 96 résultats trouvés mais aucun d'eux ne correspond à une position anatomique spécifique pour les capteurs IMU. \n\nLes positions mentionnées sont :\n\n- Horse (cheval)\n- ExperimentalDevices (dispositifs expérimentaux)\n- SensorsPosition (position des capteurs)\n- node5, node6, node10, node11, node12, etc. (des noms de noeuds qui ne correspondent pas à une position anatomique spécifique)\n- Withers (une zone du corps du cheval)\n- CanonOfForelimb et CanonOfHindlimb (les canons des membres avant et arrière du cheval)\n- Sternum (la poitrine du cheval)\n\nJe n'ai trouvé aucune information sur les positions anatomiques spécifiques pour les capteurs IMU.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?position\nWHERE {\n  ?sensor horses:isAttachedTo ?horse .\n  ?horse horses:hasName \"Dakota\" .\n  ?sensor rdf:type horses:InertialSensors .\n  ?sensor rdf:type ?position .\n  FILTER(?position != horses:InertialSensors)\n}",
+        "results_count": 96,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q14",
+      "question": "Quel est l'identifiant du capteur IMU placé au garrot ?",
+      "ground_truth": "L'identifiant du capteur IMU placé au garrot est IMU-W-001.",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "L'identifiant du capteur IMU placé au garrot est le suivant :\n\n* L'identifiant du capteur IMU est : IMU-W-001 (type 'Withers').\n\nCette information est trouvée en utilisant la propriété 'hasSensorID'.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?sensorID\nWHERE {\n  ?sensor rdf:type horses:Withers .\n  ?sensor horses:hasSensorID ?sensorID .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q15",
+      "question": "Quelle est la fréquence d'échantillonnage du capteur IMU au sternum ?",
+      "ground_truth": "La fréquence d'échantillonnage du capteur IMU au sternum est de 200 Hz.",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "chatbot_response": {
+        "answer": "La fréquence d'échantillonnage du capteur IMU au sternum est de 200 Hz.\n\nCela signifie que le capteur collecte des données à une cadence très élevée, ce qui permet une précision et une fiabilité optimales pour suivre les mouvements du cheval.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?frequency\nWHERE {\n  ?sensor rdf:type horses:Sternum .\n  ?sensor horses:hasSensorTime ?frequency .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q16",
+      "question": "Quel capteur a la fréquence d'échantillonnage la plus élevée ?",
+      "ground_truth": "Le capteur IMU_CanonFore_01 (canon antérieur) a la fréquence d'échantillonnage la plus élevée avec 250 Hz.",
+      "category": "comparison",
+      "difficulty": "hard",
+      "chatbot_response": {
+        "answer": "Le capteur ayant la fréquence d'échantillonnage la plus élevée est l'IMU_CanonFore_01.\n\nVoici les détails du capteur :\n\n* Identifiant : IMU_CanonFore_01\n* Fréquence d'échantillonnage : 250 Hz\n\nCela signifie que le capteur IMU_CanonFore_01 prend des mesures à une fréquence de 250 fois par seconde.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?sensorID ?frequency\nWHERE {\n  ?sensor rdf:type horses:InertialSensors .\n  ?sensor horses:hasSensorID ?sensorID .\n  ?sensor horses:hasSensorTime ?frequency .\n}\nORDER BY DESC(?frequency)\nLIMIT 1",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+      {
+      "question_id": "Q17",
+      "question": "Quels cavaliers sont associés à Dakota ?",
+      "ground_truth": "Deux cavaliers sont associés à Dakota : Emma et Manon.",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Dakota est associé à deux cavaliers.\n\n1. Emma (Rider_Emma)\n2. Manon (Rider_Manon)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?rider\nWHERE {\n  ?horse horses:hasName \"Dakota\" .\n  ?rider rdf:type horses:Rider .\n  ?rider horses:AssociatedWith ?horse .\n}",
+        "results_count": 2,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q18",
+      "question": "Quel cavalier est associé à Naya ?",
+      "ground_truth": "Le cavalier Leo est associé à Naya.",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Le cavalier associé au cheval Naya est :\n\n* Le cavalier Leo (Rider_Leo) \n\nC'est le seul résultat trouvé dans le graphe de connaissances.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?rider\nWHERE {\n  ?horse horses:hasName \"Naya\" .\n  ?rider rdf:type horses:Rider .\n  ?rider horses:AssociatedWith ?horse .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q19",
+      "question": "Combien de cavaliers différents sont dans le système ?",
+      "ground_truth": "Il y a 3 cavaliers différents dans le système : Emma, Manon et Leo.",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Il y a 3 cavaliers différents dans le système.\n\nVoici les détails :\n\n* Le nombre total de cavaliers est de 3 (selon la requête).\n* Il s'agit d'individus du type \"horses:Rider\" (cavalier).",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT (COUNT(DISTINCT ?rider) AS ?count)\nWHERE {\n  ?rider rdf:type horses:Rider .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q20",
+      "question": "Qui est le vétérinaire impliqué dans les soins des chevaux ?",
+      "ground_truth": "Le Dr Martin est le vétérinaire impliqué dans les soins des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "Le vétérinaire impliqué dans les soins des chevaux est :\n\n* Dr Martin (Vet_DrMartin) \n\nIl s'agit d'un vétérinaire qui est impliqué dans les entraînements des chevaux, ce qui suggère qu'il prend en charge la santé et le bien-être de ces animaux.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT DISTINCT ?veterinarian\nWHERE {\n  ?training horses:involvesActor ?veterinarian .\n  ?veterinarian rdf:type horses:Veterinarian .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q21",
+      "question": "Qui est le soigneur responsable des chevaux ?",
+      "ground_truth": "Sophie est la soigneuse responsable des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "La personne responsable des chevaux est Sophie.\n\nElle est soigneur (Caretaker) qui participe aux entraînements (Training). \n\nVoici les informations disponibles sur elle :\n\n* Elle s'appelle Caretaker_Sophie.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?caretaker\nWHERE {\n  ?training rdf:type horses:Training .\n  ?training horses:involvesActor ?caretaker .\n  ?caretaker rdf:type horses:Caretaker .\n}",
+        "results_count": 2,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q22",
+      "question": "Quels acteurs humains sont impliqués dans la phase de préparation de l'entraînement ?",
+      "ground_truth": "Trois acteurs sont impliqués dans la phase de préparation : Emma (cavalière), Dr Martin (vétérinaire) et Sophie (soigneuse).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Les acteurs humains impliqués dans la phase de préparation de l'entraînement sont :\n\n1. Emma, le cavalier (Rider_Emma)\n2. Dr Martin, le vétérinaire (Vet_DrMartin) \n3. Sophie, la personne chargée des soins aux chevaux (Caretaker_Sophie)\n\nIls jouent tous un rôle clé dans l'entraînement et la préparation des chevaux avant les compétitions.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?actor\nWHERE {\n  ?training rdf:type horses:PreparationStage .\n  ?training horses:involvesActor ?actor .\n}",
+        "results_count": 3,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q23",
+      "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
+      "ground_truth": "Deux personnes participent à la phase pré-compétition : Manon (cavalière) et Sophie (soigneuse).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Les personnes qui participent à la phase pré-compétition de l'entraînement sont :\n\n1. Rider_Manon (rider)\n2. Caretaker_Sophie (soigneur)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?actor\nWHERE {\n  ?training rdf:type horses:PreCompetitionStage .\n  ?training horses:involvesActor ?actor .\n}",
+        "results_count": 2,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q24",
+      "question": "Quelle est la période de la saison 2026 ?",
+      "ground_truth": "La saison 2026 s'étend du 1er mars 2026 au 31 octobre 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "La période de la saison 2026 est du **1er mars** au **31 octobre**.\n\n* Cette période correspond à la phase de compétition (CompetitiveSeason) pour l'année 2026.\n* Le début de la saison est fixé le 1er mars 2026.\n* La fin de la saison est fixée le 31 octobre 2026.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?start ?end\nWHERE {\n  horses:Season_2026 rdf:type horses:CompetitiveSeason .\n  horses:Season_2026 horses:seasonStart ?start .\n  horses:Season_2026 horses:seasonEnd ?end .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q25",
+      "question": "Quels événements font partie de la saison 2026 ?",
+      "ground_truth": "Deux événements font partie de la saison 2026 : Event_SJ_01 (saut d'obstacles) et Event_Dressage_01 (dressage).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "La saison 2026 comprend deux événements sportifs.\n\n1. Saut d'obstacles : Dakota participe à l'événement de saut d'obstacles (Event_SJ_01)\n2. Dressage : Dakota participe au dressage (Event_Dressage_01)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?event\nWHERE {\n  ?season rdf:type horses:CompetitiveSeason .\n  ?season horses:seasonName \"Saison 2026\" .\n  ?event horses:inSeason ?season .\n}",
+        "results_count": 2,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q26",
+      "question": "Quelle est la date de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 aura lieu le 12 avril 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "La date de l'événement \"Event_SJ_01\" est connue.\n\nVoici les informations disponibles :\n\n1. La date de l'événement Event_SJ_01 est le 12 avril 2026.\n(Le format de la date est en format ISO : année-mois-jour)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\n\nSELECT ?date\nWHERE {\n  horses:Event_SJ_01 horses:eventDate ?date .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q27",
+      "question": "Où se déroule l'événement de saut d'obstacles Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 se déroule à Saumur.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "L'événement de saut d'obstacles Event_SJ_01 se déroule à Saumur.\n\n* Lieu : Saumur\n* (Cette information est disponible dans la propriété eventLocation)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\n\nSELECT ?location\nWHERE {\n  horses:Event_SJ_01 horses:eventLocation ?location .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q28",
+      "question": "Où se déroule l'événement de dressage Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 se déroule à Angers.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "chatbot_response": {
+        "answer": "L'événement de dressage Event_Dressage_01 se déroule à Angers.\n\n* L'emplacement exact est : Angers.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\n\nSELECT ?location\nWHERE {\n  horses:Event_Dressage_01 horses:eventLocation ?location .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q29",
+      "question": "Quelle est la catégorie de l'événement Event_SJ_01 ?",
+      "ground_truth": "L'événement Event_SJ_01 est de catégorie Amateur 1.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "La catégorie de l'événement Event_SJ_01 est :\n\n* Amateur 1 (catégorie réservée aux cavaliers amateurs)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\n\nSELECT ?category\nWHERE {\n  horses:Event_SJ_01 horses:category ?category .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q30",
+      "question": "Quelle est la catégorie de l'événement Event_Dressage_01 ?",
+      "ground_truth": "L'événement Event_Dressage_01 est de catégorie Club Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "La catégorie de l'événement Event_Dressage_01 est le club élite.\n\n* C'est une compétition pour les chevaux éligibles au niveau Club Elite (détail : pas d'information supplémentaire disponible sur ce contexte).",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\n\nSELECT ?category\nWHERE {\n  horses:Event_Dressage_01 horses:category ?category .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q31",
+      "question": "Quel classement Dakota et Emma ont-ils obtenu à Event_SJ_01 ?",
+      "ground_truth": "Dakota et Emma ont obtenu la 2ème place à Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "chatbot_response": {
+        "answer": "Dakota a obtenu un classement dans l'événement de saut d'obstacles (Event_SJ_01).\n\nVoici les détails du classement :\n\n1. Dakota est classé 2ème.\n\nIl n'y a pas d'information sur le classement d'Emma dans ce contexte.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?rank\nWHERE {\n  horses:Event_SJ_01 horses:hasParticipation ?participation .\n  ?participation horses:hasHorse ?horse .\n  ?horse horses:hasName \"Dakota\" .\n  ?participation horses:rank ?rank .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q32",
+      "question": "Compare les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition.",
+      "ground_truth": "La phase de préparation a une fréquence de 4 séances par semaine, tandis que la phase pré-compétition a une fréquence de 3 séances par semaine. La préparation est légèrement plus intensive en termes de fréquence.",
+      "category": "comparison",
+      "difficulty": "hard",
+      "chatbot_response": {
+        "answer": "**Comparaison des fréquences d'entraînement entre la phase de préparation et la phase pré-compétition**\n\nLes données disponibles permettent une comparaison limitée entre les deux phases étudiées.\n\n* **Phase de préparation (PreparationStage)** : \n + La fréquence d'entraînement est de 4 fois.\n + Il y a au moins deux types d'entraînement correspondants avec cette fréquence.\n\n* **Phase pré-compétition (PreCompetitionStage)** :\n + La fréquence d'entraînement est de 3 fois.\n + Il y a au moins deux types d'entraînement correspondants avec cette fréquence.\n\nIl n'est pas possible de déterminer si les types d'entraînement sont identiques ou non entre les deux phases étudiées.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?stage ?frequency\nWHERE {\n  ?training rdf:type horses:Training .\n  ?training horses:Frequency ?frequency .\n  ?training rdf:type ?stage .\n  FILTER(?stage = horses:PreparationStage || ?stage = horses:PreCompetitionStage)\n}",
+        "results_count": 4,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q33",
+      "question": "Quelles sont les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée ?",
+      "ground_truth": "La phase de préparation a 4 séances/semaine avec intensité modérée pendant 45min. La phase pré-compétition a 3 séances/semaine avec intensité élevée pendant 60min. La pré-compétition est plus intense et plus longue, mais moins fréquente.",
+      "category": "comparison",
+      "difficulty": "very_hard",
+      "chatbot_response": {
+        "answer": "Je m'excuse, mais je n'ai pas trouvé d'informations dans le graphe de connaissances qui permettent de répondre à votre question sur les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée.\n\nCela signifie que ces informations ne sont peut-être pas encore disponibles ou n'ont pas été ajoutées à la base de données. Si vous avez d'autres questions ou si vous souhaitez savoir si des informations sur un autre sujet existent dans le graphe de connaissances, je serais ravi de les aider !",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?stage ?frequency ?intensity ?volume\nWHERE {\n  ?stage rdf:type horses:PreparationStage ;\n          horses:Frequency ?frequency ;\n          horses:Intensity ?intensity ;\n          horses:Volume ?volume .\n}\nUNION\n{\n  ?stage rdf:type horses:PreCompetitionStage ;\n          horses:Frequency ?frequency ;\n          horses:Intensity ?intensity ;\n          horses:Volume ?volume .\n}",
+        "results_count": 0,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q34",
+      "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
+      "ground_truth": "La phase de préparation implique Emma (cavalière), Dr Martin (vétérinaire) et Sophie (soigneuse), soit 3 acteurs. La phase pré-compétition implique Manon (cavalière) et Sophie (soigneuse), soit 2 acteurs. Sophie est la seule personne commune aux deux phases. Emma et Dr Martin ne participent qu'à la préparation, tandis que Manon ne participe qu'à la pré-compétition.",
+      "category": "comparison",
+      "difficulty": "very_hard",
+      "chatbot_response": {
+        "answer": "Je suis désolé, mais je n'ai pas trouvé d'informations dans le graphe de connaissances qui me permettent de comparer les acteurs impliqués dans les phases de préparation et de pré-compétition.\n\nIl est possible que ces informations ne soient pas encore présentes dans la base de données ou qu'elles aient été oubliées. Si vous avez des questions sur d'autres sujets, je serais ravi de tenter de répondre en utilisant les informations disponibles.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?actor ?actorType ?stage\nWHERE {\n  ?training rdf:type horses:PreparationStage, horses:PreCompetitionStage .\n  ?training horses:involvesActor ?actor .\n  ?actor rdf:type ?actorType .\n  BIND(IF(?training a horses:PreparationStage, 'Préparation', 'Pré-compétition') AS ?stage)\n}",
+        "results_count": 0,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q35",
+      "question": "Donne une analyse complète de l'événement Event_SJ_01.",
+      "ground_truth": "L'événement Event_SJ_01 est une compétition de saut d'obstacles qui aura lieu le 12 avril 2026 à Saumur en catégorie Amateur 1, dans le cadre de la Saison 2026. Dakota, monté par Emma, y a obtenu la 2ème place. La préparation pour cet événement comprenait deux phases d'entraînement : une phase de préparation (4 séances/semaine, intensité modérée, 45min) avec Emma, Dr Martin et Sophie, et une phase pré-compétition (3 séances/semaine, intensité élevée, 60min) avec Manon et Sophie.",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme",
+      "chatbot_response": {
+        "answer": "Analyse complète de l'événement Event_SJ_01 :\n\nL'événement Event_SJ_01 a lieu le 12 avril 2026 à Saumur.\n\n**Informations générales**\n\n* Date : 12 avril 2026\n* Lieu : Saumur\n\n**Catégorie et période de saison**\n\n* Catégorie : Amateur 1\n* Période de saison : du 1er mars au 31 octobre 2026\n\n**Capteurs attachés aux chevaux**\n\n* IMU-W-001 (fréquence : 200Hz)\n* IMU-CF-002 (fréquence : 250Hz)\n* IMU-CH-003 (fréquence : 250Hz)\n* IMU-ST-004 (fréquence : 200Hz)\n\n**Remarque**\n\nIl n'y a pas d'informations disponibles sur les cavaliers associés à cet événement.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?eventName ?eventDate ?eventLocation ?category ?start ?end ?riderName ?sensorID ?frequency\nWHERE {\n  horses:Event_SJ_01 horses:eventDate ?eventDate .\n  horses:Event_SJ_01 horses:eventLocation ?eventLocation .\n  horses:Event_SJ_01 horses:category ?category .\n  horses:Event_SJ_01 horses:inSeason ?season .\n  ?season horses:seasonStart ?start .\n  ?season horses:seasonEnd ?end .\n  horses:Event_SJ_01 horses:hasParticipation ?participation .\n  ?participation horses:hasRider ?rider .\n  ?rider horses:AssociatedWith ?horse .\n  ?sensor horses:isAttachedTo ?horse .\n  ?sensor horses:hasSensorID ?sensorID .\n  ?sensor horses:hasSensorTime ?frequency .\n}",
+        "results_count": 4,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q36",
+      "question": "Combien d'événements sportifs sont enregistrés dans le système ?",
+      "ground_truth": "Il y a 2 événements sportifs enregistrés dans le système : un événement de saut d'obstacles (Event_SJ_01) et un événement de dressage (Event_Dressage_01).",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Je suis désolé, mais je n'ai pas trouvé d'informations pour répondre à votre question.\n\nIl est possible que les événements sportifs ne soient pas encore enregistrés dans le système ou qu'ils ne figurent pas dans la base de données actuellement disponible. Si vous avez besoin d'informations sur un type spécifique d'événement, comme par exemple des compétitions de dressage, je serais ravi de tenter de les trouver pour vous.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?event) AS ?numberOfEvents)\nWHERE {\n  ?event a rdfs:subClassOf* horses:SportingEvent .\n}",
+        "results_count": 0,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q37",
+      "question": "Quels types d'événements sportifs sont disponibles dans l'ontologie ?",
+      "ground_truth": "Les événements sportifs dans l'ontologie incluent le saut d'obstacles (ShowJumping) et le dressage (Dressage).",
+      "category": "hierarchical",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Les types d'événements sportifs disponibles dans l'ontologie sont :\n\n1. **Saut d'obstacles** (ShowJumping)\n2. **Cross-country** (Cross)\n3. **Dressage**\n4. **Événement sportif général** (SportingEvent)\n\nCes types correspondent aux sous-classes de la classe principale \"SportingEvent\".",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?event_type\nWHERE {\n  ?event_type rdfs:subClassOf* horses:SportingEvent .\n}",
+        "results_count": 4,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+     {
+      "question_id": "Q38",
+      "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_Withers_01 est utilisé pour la classification de la démarche (GaitClassification).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Le capteur IMU_Withers_01 est utilisé pour l'objectif expérimental suivant :\n\n1.  GaitClassif_01\n    (étude du comportement équin, classification des gaits)",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?objective\nWHERE {\n  horses:IMU_Withers_01 horses:isUsedFor ?objective .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q39",
+      "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
+      "ground_truth": "Le capteur IMU_CanonFore_01 est utilisé pour la détection de fatigue (FatigueDetection).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Le capteur IMU_CanonFore_01 est utilisé pour détecter la fatigue.\n\nVoici les détails :\n\n* L'objectif expérimental principal est le **détecteur de fatigue** (FatigueDetection).",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?objective\nWHERE {\n  horses:IMU_CanonFore_01 horses:isUsedFor ?objective .\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    },
+    {
+      "question_id": "Q40",
+      "question": "Quel est l'âge de Dakota ?",
+      "ground_truth": "L'information sur l'âge de Dakota n'est pas disponible dans le système.",
+      "category": "unanswerable",
+      "difficulty": "medium",
+      "chatbot_response": {
+        "answer": "Je n'ai pas trouvé d'information concernant l'âge de Dakota dans le graphe de connaissances.\n\nSi tu veux obtenir plus d'informations sur Dakota, je pourrais t'aider à explorer les autres propriétés du cheval.",
+        "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?horse ?age\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Dakota\" .\n  OPTIONAL { ?horse horses:hasAge ?age . }\n}",
+        "results_count": 1,
+        "response_time": 0
+      },
+      "status": "success"
+    }
+  ]
+}
