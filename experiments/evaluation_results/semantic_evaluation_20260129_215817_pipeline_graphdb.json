@@ -1,0 +1,936 @@
+{
+  "metadata": {
+    "timestamp": "20260129_215817",
+    "total_questions": 40,
+    "total_time_seconds": 551.370846748352,
+    "avg_time_per_question": 13.784271168708802,
+    "query_cost_usd": 0.0,
+    "evaluation_cost_usd": 0.0,
+    "total_cost_usd": 0.0,
+    "model": "gpt-4o-mini (judge) + local SPARQL/Answer LLMs",
+    "evaluation_type": "semantic_similarity + llm_judge"
+  },
+  "overall_metrics": {
+    "success_rate": 1.0,
+    "failed_count": 0,
+    "avg_semantic_similarity": 0.779546350926832,
+    "avg_llm_judge_overall": 0.6655,
+    "avg_llm_judge_correctness": 0.6837500000000001,
+    "avg_llm_judge_completeness": 0.635,
+    "avg_llm_judge_accuracy": 0.67875,
+    "avg_combined_score": 0.722523175463416
+  },
+  "category_stats": {
+    "hierarchical": {
+      "count": 1,
+      "success_rate": 1.0,
+      "avg_time": 11.772049188613892,
+      "avg_semantic_similarity": 0.7583071876482859,
+      "avg_llm_judge": 0.53,
+      "avg_combined": 0.644153593824143
+    },
+    "aggregation": {
+      "count": 5,
+      "success_rate": 1.0,
+      "avg_time": 14.777879571914672,
+      "avg_semantic_similarity": 0.7788612286143565,
+      "avg_llm_judge": 0.6839999999999999,
+      "avg_combined": 0.7314306143071783
+    },
+    "attribute_retrieval": {
+      "count": 10,
+      "success_rate": 1.0,
+      "avg_time": 10.34103102684021,
+      "avg_semantic_similarity": 0.8393645657160802,
+      "avg_llm_judge": 0.873,
+      "avg_combined": 0.8561822828580402
+    },
+    "multi_hop_complex": {
+      "count": 1,
+      "success_rate": 1.0,
+      "avg_time": 22.800217151641846,
+      "avg_semantic_similarity": 0.4676605273336298,
+      "avg_llm_judge": 0.0,
+      "avg_combined": 0.2338302636668149
+    },
+    "simple_retrieval": {
+      "count": 5,
+      "success_rate": 1.0,
+      "avg_time": 17.614562463760375,
+      "avg_semantic_similarity": 0.7787475771539343,
+      "avg_llm_judge": 0.76,
+      "avg_combined": 0.7693737885769671
+    },
+    "single_hop": {
+      "count": 9,
+      "success_rate": 1.0,
+      "avg_time": 13.276620546976725,
+      "avg_semantic_similarity": 0.7768730515498424,
+      "avg_llm_judge": 0.6055555555555556,
+      "avg_combined": 0.6912143035526991
+    },
+    "unanswerable": {
+      "count": 1,
+      "success_rate": 1.0,
+      "avg_time": 13.836799144744873,
+      "avg_semantic_similarity": 0.7491990500523918,
+      "avg_llm_judge": 1.0,
+      "avg_combined": 0.874599525026196
+    },
+    "multi_hop": {
+      "count": 4,
+      "success_rate": 1.0,
+      "avg_time": 13.69342029094696,
+      "avg_semantic_similarity": 0.8023542297614982,
+      "avg_llm_judge": 0.6075,
+      "avg_combined": 0.7049271148807491
+    },
+    "comparison": {
+      "count": 4,
+      "success_rate": 1.0,
+      "avg_time": 15.831498682498932,
+      "avg_semantic_similarity": 0.7059308007605355,
+      "avg_llm_judge": 0.315,
+      "avg_combined": 0.5104654003802678
+    }
+  },
+  "difficulty_stats": {
+    "very_hard": {
+      "count": 2,
+      "success_rate": 1.0,
+      "avg_time": 17.001672506332397,
+      "avg_semantic_similarity": 0.5567841105601009,
+      "avg_llm_judge": 0.0
+    },
+    "medium": {
+      "count": 22,
+      "success_rate": 1.0,
+      "avg_time": 12.454916130412709,
+      "avg_semantic_similarity": 0.79524912740123,
+      "avg_llm_judge": 0.7436363636363637
+    },
+    "extreme": {
+      "count": 1,
+      "success_rate": 1.0,
+      "avg_time": 22.800217151641846,
+      "avg_semantic_similarity": 0.4676605273336298,
+      "avg_llm_judge": 0.0
+    },
+    "hard": {
+      "count": 6,
+      "success_rate": 1.0,
+      "avg_time": 15.39739724000295,
+      "avg_semantic_similarity": 0.7929295464104561,
+      "avg_llm_judge": 0.5883333333333334
+    },
+    "easy": {
+      "count": 9,
+      "success_rate": 1.0,
+      "avg_time": 14.241638474994236,
+      "avg_semantic_similarity": 0.8163963563699611,
+      "avg_llm_judge": 0.7477777777777779
+    }
+  },
+  "detailed_results": [
+    {
+      "question_id": "Q1",
+      "question": "Quels sont les noms des chevaux dans le système ?",
+      "answer": "Les noms des chevaux dans le système sont :\n\n1. Dakota\n2. Naya\n\nCes informations proviennent de la propriété hasName de la classe Horse.",
+      "ground_truth": "Les chevaux dans le système sont Dakota et Naya.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 41.96920919418335,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?horseName\nWHERE {\n  ?horse rdf:type horses:Horse .\n  OPTIONAL { ?horse horses:hasName ?horseName . }\n}",
+      "success": true,
+      "semantic_similarity": 0.7911322475755267,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately lists the names of the horses as Dakota and Naya, matching the reference perfectly. It also provides additional context about the source of the information, which enhances its relevance."
+      },
+      "combined_score": 0.8955661237877633
+    },
+    {
+      "question_id": "Q2",
+      "question": "Quelle est la race de Dakota ?",
+      "answer": "La race de Dakota est connue.\n\nVoici les informations relatives à la race de Dakota :\n\n1. La race de Dakota est le Selle Français.\n\nCe sont des chevaux originaire de France, sélectionnés pour leur beauté et leur tempérament équilibré.",
+      "ground_truth": "Dakota est un cheval de race Selle Français.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 13.506379842758179,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?race\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Dakota\" .\n  OPTIONAL { ?horse horses:hasRace ?race . }\n}",
+      "success": true,
+      "semantic_similarity": 0.7948399124784192,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer does not provide the specific breed of Dakota, which is essential information. It only states that the breed is known, failing to mention that Dakota is a Selle Français, as indicated in the reference."
+      },
+      "combined_score": 0.3974199562392096
+    },
+    {
+      "question_id": "Q3",
+      "question": "Quelle est la race de Naya ?",
+      "answer": "La race de Naya est connue.\n\n* La race de Naya est l'Anglo-Arabe.",
+      "ground_truth": "Naya est un cheval de race Anglo-Arabe.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 10.252337217330933,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?race\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Naya\" .\n  OPTIONAL { ?horse horses:hasRace ?race . }\n}",
+      "success": true,
+      "semantic_similarity": 0.7793000384801245,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer correctly identifies Naya as an Anglo-Arabe, which matches the reference. It provides complete and precise information."
+      },
+      "combined_score": 0.8896500192400623
+    },
+    {
+      "question_id": "Q4",
+      "question": "Dans quels événements sportifs Dakota participe-t-il ?",
+      "answer": "Je suis désolé, mais je n'ai pas trouvé d'informations dans le graphe de connaissances qui permettent de répondre à votre question.\n\nIl est possible que les informations relatives aux événements sportifs dans lesquels Dakota participe ne soient pas encore disponibles ou qu'elles ne figurent pas dans la base de données actuelle. Si vous avez d'autres questions ou si vous souhaitez connaître des informations sur un autre sujet, je serais ravi de vous aider !",
+      "ground_truth": "Dakota participe à deux événements sportifs : Event_SJ_01 (saut d'obstacles) et Event_Dressage_01 (dressage).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 17.20854687690735,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?eventName\nWHERE {\n  ?horse horses:hasName \"Dakota\" .\n  ?training horses:TrainsIn ?eventParticipation .\n  ?eventParticipation horses:hasHorse ?horse .\n  ?eventParticipation horses:hasRider ?rider .\n  ?training horses:dependsOn ?event .\n  ?event horses:eventDate ?date .\n  ?event horses:category ?category .\n  BIND(CONCAT(?date, \" - \", ?category) AS ?eventName)\n}",
+      "success": true,
+      "semantic_similarity": 0.4743036164175791,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer does not provide any information about the events Dakota participates in, which directly contradicts the reference that specifies two events. Therefore, it scores zero in all categories."
+      },
+      "combined_score": 0.23715180820878956
+    },
+    {
+      "question_id": "Q5",
+      "question": "Quelles étapes d'entraînement Dakota suit-il ?",
+      "answer": "Dakota suit les étapes d'entraînement suivantes :\n\n1. **Phase de préparation** (Training_Preparation_SJ_01) : une phase de préparation générale avant le début des compétitions.\n2. **Phase de pré-compétition** (Training_PreCompetition_SJ_01 et Training_PreComp_SJ_01) : une phase d'entraînement spécifique qui se déroule juste avant les compétitions pour préparer le cheval à la concurrence.\n3. **Saut d'obstacles de préparation** (Training_Prepa_SJ_01) : une étape d'entraînement spécifique au saut d'obstacles, qui vise à améliorer les performances du cheval dans cette discipline.\n4. **Phase de concurrence** (Training_Competition_SJ_01) : la phase d'entraînement qui se déroule pendant les compétitions pour maintenir et améliorer les performances du cheval.\n5. **Transition** (Training_Transition_SJ_01) : une étape d'entraînement qui vise à aider le cheval à passer d'une phase d'entraînement à une autre, en général pour adapter son entraînement à un nouveau niveau de compétition.\n\nNotez que ces étapes sont toutes liées au saut d'obstacles (CSO).",
+      "ground_truth": "Dakota suit deux étapes d'entraînement : Training_Prepa_SJ_01 (préparation) et Training_PreComp_SJ_01 (pré-compétition).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 17.590898990631104,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?training\nWHERE {\n  ?horse horses:hasName \"Dakota\" .\n  ?horse horses:TrainsIn ?training .\n}",
+      "success": true,
+      "semantic_similarity": 0.7680179783029032,
+      "llm_judge_scores": {
+        "correctness": 0.4,
+        "completeness": 0.2,
+        "accuracy": 0.5,
+        "overall": 0.37,
+        "reasoning": "The model answer includes additional steps that are not mentioned in the reference, leading to a low correctness and completeness score. It misrepresents the specific training steps Dakota follows, as it introduces phases that are not part of the ground truth."
+      },
+      "combined_score": 0.5690089891514516
+    },
+    {
+      "question_id": "Q6",
+      "question": "Quelle est la fréquence d'entraînement pendant la phase de préparation ?",
+      "answer": "La fréquence d'entraînement pendant la phase de préparation est de 4 fois.\n\n* Cela signifie que le cheval entraîne 4 fois par semaine pendant cette période.\n* Cette fréquence peut varier en fonction des besoins spécifiques du cheval et de son programme d'entraînement.",
+      "ground_truth": "Pendant la phase de préparation, la fréquence d'entraînement est de 4 séances par semaine.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "time_seconds": 11.699234962463379,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?frequency\nWHERE {\n  ?training rdf:type horses:PreparationStage .\n  ?training horses:Frequency ?frequency .\n}",
+      "success": true,
+      "semantic_similarity": 0.7966680328379319,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.8,
+        "accuracy": 0.9,
+        "overall": 0.9,
+        "reasoning": "The model answer correctly states the frequency of training as 4 times per week, which matches the reference. However, it lacks the explicit mention of 'seances' and does not fully capture the context of the training phase, which slightly affects completeness."
+      },
+      "combined_score": 0.8483340164189659
+    },
+    {
+      "question_id": "Q7",
+      "question": "Quelle est l'intensité d'entraînement durant la phase pré-compétition ?",
+      "answer": "L'intensité d'entraînement durant la phase pré-compétition est élevée.\n\nEn effet, nous avons deux résultats qui confirment cette information :\n\n* L'intensité est classifiée comme \"High\" (élevée) dans le premier résultat.\n* Dans le deuxième résultat, l'intensité est explicitement mentionnée comme étant \"Élevée\".\n\nCela suggère que les entraîneurs mettent en place des programmes d'entraînement rigoureux et intenses pendant cette période pour préparer les chevaux à la compétition.",
+      "ground_truth": "Durant la phase pré-compétition, l'intensité d'entraînement est élevée.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "time_seconds": 12.147214651107788,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?intensity\nWHERE {\n  ?training rdf:type horses:PreCompetitionStage .\n  ?training horses:Intensity ?intensity .\n}",
+      "success": true,
+      "semantic_similarity": 0.7485142248179391,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately reflects the reference by stating that the training intensity during the pre-competition phase is high. It includes all important information and is precise and relevant."
+      },
+      "combined_score": 0.8742571124089695
+    },
+    {
+      "question_id": "Q8",
+      "question": "Quelle est la durée des séances pendant la phase de préparation ?",
+      "answer": "La durée des séances pendant la phase de préparation est de 45 minutes.\n\nVoici les détails :\n\n* La durée est identique pour les deux instances de PreparationStage (Résultat 1 et Résultat 2).\n* Il s'agit d'une durée fixe, sans variation possible.",
+      "ground_truth": "Pendant la phase de préparation, les séances durent 45 minutes.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "time_seconds": 11.744402885437012,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?duration\nWHERE {\n  ?training rdf:type horses:PreparationStage .\n  ?training horses:Volume ?duration .\n}",
+      "success": true,
+      "semantic_similarity": 0.799070747259787,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately reflects the reference, providing the same duration of 45 minutes without any omissions or inaccuracies."
+      },
+      "combined_score": 0.8995353736298934
+    },
+    {
+      "question_id": "Q9",
+      "question": "Quelle est la durée des séances pendant la phase pré-compétition ?",
+      "answer": "La durée des séances pendant la phase pré-compétition est de 60 minutes.\n\n* La durée est la même pour les deux instances de PreCompetitionStage (Résultat 1 et Résultat 2).\n* Les propriétés Volume ne sont pas pertinentes pour répondre à la question.",
+      "ground_truth": "Pendant la phase pré-compétition, les séances durent 60 minutes.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "time_seconds": 12.048418998718262,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?duration\nWHERE {\n  ?training rdf:type horses:PreCompetitionStage .\n  ?training horses:Volume ?duration .\n}",
+      "success": true,
+      "semantic_similarity": 0.8031097820982683,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately reflects the information provided in the reference, stating the duration of the sessions during the pre-competition phase as 60 minutes, which is both correct and complete."
+      },
+      "combined_score": 0.9015548910491342
+    },
+    {
+      "question_id": "Q10",
+      "question": "De quel événement dépendent les étapes d'entraînement de Dakota ?",
+      "answer": "Je suis désolé, mais je n'ai pas trouvé d'information sur le contexte fourni qui me permettrait de déterminer de quel événement dépendent les étapes d'entraînement de Dakota.\n\nIl est possible que ces informations ne soient pas encore présentes dans la base de données ou qu'elles aient été oubliées. Si vous avez des informations supplémentaires sur le contexte, je serais ravi de l'aider à trouver les réponses que vous cherchez !",
+      "ground_truth": "Les deux étapes d'entraînement de Dakota (préparation et pré-compétition) dépendent de l'événement de saut d'obstacles Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "time_seconds": 16.91330909729004,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?event\nWHERE {\n  ?horse horses:hasName \"Dakota\" .\n  ?training horses:TrainsIn ?event .\n  ?training horses:involvesActor ?actor .\n  ?actor rdf:type horses:Rider .\n}",
+      "success": true,
+      "semantic_similarity": 0.581612677860731,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer does not provide any information regarding the event that the training stages of Dakota depend on, which is explicitly stated in the reference. Therefore, it fails in all aspects of correctness, completeness, and accuracy."
+      },
+      "combined_score": 0.2908063389303655
+    },
+    {
+      "question_id": "Q11",
+      "question": "Combien de capteurs IMU sont attachés à Dakota ?",
+      "answer": "Dakota est équipé de plusieurs capteurs IMU.\n\nVoici le détail du nombre de capteurs IMU attachés à Dakota :\n\n* 4 capteurs IMU sont attachés à Dakota (ce qui signifie qu'il y a quatre InertialSensors associés au cheval via la relation isAttachedTo).",
+      "ground_truth": "4 capteurs IMU sont attachés à Dakota.",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "time_seconds": 17.601881980895996,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT (COUNT(?sensor) AS ?count)\nWHERE {\n  ?horse horses:hasName \"Dakota\" .\n  ?sensor rdf:type horses:InertialSensors .\n  ?sensor horses:isAttachedTo ?horse .\n}",
+      "success": true,
+      "semantic_similarity": 0.8365354600391347,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer correctly states that there are 4 IMU sensors attached to Dakota and provides additional context, making it both accurate and complete."
+      },
+      "combined_score": 0.9182677300195674
+    },
+    {
+      "question_id": "Q12",
+      "question": "Quels sont les identifiants des capteurs IMU ?",
+      "answer": "Les identifiants des capteurs IMU sont les suivants :\n\n* SI-001523\n* IMU-W-001\n* IMU-CF-002\n* IMU-CH-003\n* IMU-ST-004\n\nCes identifiants correspondent aux propriétés hasSensorID des capteurs IMU de la classe InertialSensors.",
+      "ground_truth": "Les identifiants des capteurs IMU sont : IMU-W-001, IMU-CF-002, IMU-CH-003 et IMU-ST-004.",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "time_seconds": 12.963058948516846,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?sensorID\nWHERE {\n  ?sensor rdf:type horses:InertialSensors .\n  ?sensor horses:hasSensorID ?sensorID .\n}",
+      "success": true,
+      "semantic_similarity": 0.908472224194451,
+      "llm_judge_scores": {
+        "correctness": 0.8,
+        "completeness": 0.75,
+        "accuracy": 0.7,
+        "overall": 0.75,
+        "reasoning": "The model answer includes the correct IMU sensor IDs but introduces an irrelevant identifier (SI-001523) that is not part of the reference. This affects correctness and completeness, as it does not fully align with the reference."
+      },
+      "combined_score": 0.8292361120972255
+    },
+    {
+      "question_id": "Q13",
+      "question": "À quelles positions anatomiques les capteurs IMU sont-ils placés sur Dakota ?",
+      "answer": "Je vais essayer de répondre à votre question en utilisant les informations disponibles.\n\nLes capteurs IMU sont placés sur Dakota à différentes positions anatomiques. Voici les positions identifiées :\n\n* **Horse** : c'est la position générale du cheval, mais cela ne nous donne pas d'information spécifique.\n* **CanonOfForelimb** : il s'agit de la jambe avant (jambe devant).\n* **CanonOfHindlimb** : il s'agit de la jambe arrière (jambe derrière).\n* **Sternum** : c'est le nom français du sternum, qui est une partie du squelette du cheval située entre les côtes.\n\nCes informations nous indiquent que les capteurs IMU sont placés sur différentes parties du corps de Dakota, notamment ses jambes et son sternum.",
+      "ground_truth": "Les capteurs IMU sont placés à 4 positions : garrot (Withers), canon antérieur (CanonOfForelimb), canon postérieur (CanonOfHindlimb) et sternum (Sternum).",
+      "category": "aggregation",
+      "difficulty": "hard",
+      "time_seconds": 20.46894073486328,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?position\nWHERE {\n  ?horse horses:hasName \"Dakota\" .\n  ?sensor horses:isAttachedTo ?horse .\n  ?sensor rdf:type ?position .\n  FILTER(?position != horses:InertialSensors)\n}",
+      "success": true,
+      "semantic_similarity": 0.7148133326538949,
+      "llm_judge_scores": {
+        "correctness": 0.75,
+        "completeness": 0.75,
+        "accuracy": 0.8,
+        "overall": 0.77,
+        "reasoning": "The model answer correctly identifies three of the four positions (CanonOfForelimb, CanonOfHindlimb, and Sternum) but omits the garrot (Withers), which is a significant omission. The general reference to 'Horse' is vague and does not add value."
+      },
+      "combined_score": 0.7424066663269475
+    },
+    {
+      "question_id": "Q14",
+      "question": "Quel est l'identifiant du capteur IMU placé au garrot ?",
+      "answer": "L'identifiant du capteur IMU placé au garrot est le suivant :\n\n* L'identifiant est : IMU-W-001\n* Il s'agit d'un capteur IMU situé aux épaules (type 'Withers').\n\nC'est l'information trouvée dans le contexte de la requête.",
+      "ground_truth": "L'identifiant du capteur IMU placé au garrot est IMU-W-001.",
+      "category": "multi_hop",
+      "difficulty": "medium",
+      "time_seconds": 12.180888175964355,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?sensorID\nWHERE {\n  ?sensor rdf:type horses:Withers .\n  ?sensor horses:hasSensorID ?sensorID .\n}",
+      "success": true,
+      "semantic_similarity": 0.8768079551590907,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.9,
+        "accuracy": 0.9,
+        "overall": 0.93,
+        "reasoning": "The model answer correctly identifies the sensor ID as IMU-W-001, which matches the reference. It also provides additional context about the sensor's location (at the shoulders), which is relevant but not explicitly mentioned in the reference. However, the reference specifically states 'au garrot' while the model refers to 'aux épaules', which could lead to slight confusion regarding the exact location."
+      },
+      "combined_score": 0.9034039775795454
+    },
+    {
+      "question_id": "Q15",
+      "question": "Quelle est la fréquence d'échantillonnage du capteur IMU au sternum ?",
+      "answer": "La fréquence d'échantillonnage du capteur IMU au sternum est :\n\n* 200 Hz.\n\nCela signifie que le capteur prend des mesures 200 fois par seconde.",
+      "ground_truth": "La fréquence d'échantillonnage du capteur IMU au sternum est de 200 Hz.",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "time_seconds": 12.59421706199646,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?frequency\nWHERE {\n  horses:IMU_Sternum_01 rdf:type horses:Sternum .\n  horses:IMU_Sternum_01 horses:hasSensorTime ?frequency .\n}",
+      "success": true,
+      "semantic_similarity": 0.9540834826461058,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer correctly states the sampling frequency as 200 Hz, which matches the reference. It also provides a clear explanation of what this frequency means, ensuring completeness and accuracy."
+      },
+      "combined_score": 0.9770417413230529
+    },
+    {
+      "question_id": "Q16",
+      "question": "Quel capteur a la fréquence d'échantillonnage la plus élevée ?",
+      "answer": "Le capteur avec la fréquence d'échantillonnage la plus élevée est l'IMU_CanonFore_01.\n\nVoici les détails du capteur :\n\n* Nom : IMU_CanonFore_01\n* Identifiant : IMU-CF-002\n* Fréquence d'échantillonnage : 250 Hz",
+      "ground_truth": "Le capteur IMU_CanonFore_01 (canon antérieur) a la fréquence d'échantillonnage la plus élevée avec 250 Hz.",
+      "category": "comparison",
+      "difficulty": "hard",
+      "time_seconds": 14.953317880630493,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?sensor ?sensorID ?frequency\nWHERE {\n  ?sensor rdf:type horses:InertialSensors .\n  ?sensor horses:hasSensorID ?sensorID .\n  ?sensor horses:hasSensorTime ?frequency .\n}\nORDER BY DESC(?frequency)\nLIMIT 1",
+      "success": true,
+      "semantic_similarity": 0.9156420199079615,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.8,
+        "accuracy": 1.0,
+        "overall": 0.93,
+        "reasoning": "The model answer correctly identifies the sensor with the highest sampling frequency, but it lacks the specific frequency value of 250 Hz mentioned in the reference."
+      },
+      "combined_score": 0.9228210099539808
+    },
+    {
+      "question_id": "Q17",
+      "question": "Quels cavaliers sont associés à Dakota ?",
+      "answer": "Dakota est associé à deux cavaliers.\n\nVoici les informations détaillées :\n\n1. Emma (Rider_Emma)\n2. Manon (Rider_Manon)",
+      "ground_truth": "Deux cavaliers sont associés à Dakota : Emma et Manon.",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 13.599040985107422,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?rider\nWHERE {\n  ?horse horses:hasName \"Dakota\" .\n  ?rider rdf:type horses:Rider .\n  ?rider horses:AssociatedWith ?horse .\n}",
+      "success": true,
+      "semantic_similarity": 0.8575635349669208,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.0,
+        "accuracy": 0.5,
+        "overall": 0.33,
+        "reasoning": "The model answer states that Dakota is associated with two riders, which is partially correct, but it fails to mention the names of the riders (Emma and Manon), making it incomplete and less accurate."
+      },
+      "combined_score": 0.5937817674834605
+    },
+    {
+      "question_id": "Q18",
+      "question": "Quel cavalier est associé à Naya ?",
+      "answer": "Le cavalier associé au cheval Naya est :\n\n* Leo (Rider_Leo)",
+      "ground_truth": "Le cavalier Leo est associé à Naya.",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 12.155842065811157,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?rider\nWHERE {\n  ?horse horses:hasName \"Naya\" .\n  ?rider rdf:type horses:Rider .\n  ?rider horses:AssociatedWith ?horse .\n}",
+      "success": true,
+      "semantic_similarity": 0.8713367655068285,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer correctly identifies Leo as the rider associated with Naya, matching the reference exactly and providing all relevant information."
+      },
+      "combined_score": 0.9356683827534142
+    },
+    {
+      "question_id": "Q19",
+      "question": "Combien de cavaliers différents sont dans le système ?",
+      "answer": "Il y a 3 cavaliers différents dans le système.\n\nVoici les détails :\n\n* Le nombre total de cavaliers est de 3 (numberOfRiders: 3).\n* Chaque cavalier a le type \"horses:Rider\".",
+      "ground_truth": "Il y a 3 cavaliers différents dans le système : Emma, Manon et Leo.",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "time_seconds": 11.041093111038208,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT (COUNT(DISTINCT ?rider) AS ?numberOfRiders)\nWHERE {\n  ?rider rdf:type horses:Rider .\n}",
+      "success": true,
+      "semantic_similarity": 0.6350390820658077,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.7,
+        "accuracy": 1.0,
+        "overall": 0.9,
+        "reasoning": "The model answer correctly states the number of riders as 3, matching the reference. However, it lacks the specific names of the riders (Emma, Manon, and Leo) mentioned in the reference, which affects completeness."
+      },
+      "combined_score": 0.7675195410329039
+    },
+    {
+      "question_id": "Q20",
+      "question": "Qui est le vétérinaire impliqué dans les soins des chevaux ?",
+      "answer": "Le vétérinaire impliqué dans les soins des chevaux est :\n\n* Dr Martin (Vet_DrMartin) \n\nIl s'agit du seul vétérinaire identifié dans le contexte fourni comme étant impliqué dans les entraînements des chevaux.",
+      "ground_truth": "Le Dr Martin est le vétérinaire impliqué dans les soins des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 11.50787091255188,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT DISTINCT ?actor\nWHERE {\n  ?training horses:involvesActor ?actor .\n  ?actor rdf:type horses:Veterinarian .\n}",
+      "success": true,
+      "semantic_similarity": 0.8355451649655469,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer correctly identifies Dr. Martin as the veterinarian involved in the care of horses, matching the reference exactly. It includes all relevant information and presents it clearly."
+      },
+      "combined_score": 0.9177725824827734
+    },
+    {
+      "question_id": "Q21",
+      "question": "Qui est le soigneur responsable des chevaux ?",
+      "answer": "La réponse est simple.\n\nLe soigneur responsable des chevaux est :\n\n* Caretaker_Sophie (elle participe à la phase de pré-compétition)",
+      "ground_truth": "Sophie est la soigneuse responsable des chevaux.",
+      "category": "simple_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 10.837015151977539,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?caretaker\nWHERE {\n  ?training rdf:type horses:Training .\n  ?training horses:involvesActor ?caretaker .\n  ?caretaker rdf:type horses:Caretaker .\n}",
+      "success": true,
+      "semantic_similarity": 0.6929205222700543,
+      "llm_judge_scores": {
+        "correctness": 0.9,
+        "completeness": 0.7,
+        "accuracy": 0.8,
+        "overall": 0.8,
+        "reasoning": "The model answer correctly identifies Sophie as the caretaker responsible for the horses, but it lacks the explicit statement that she is the soigneur, which is important for completeness. The phrasing 'Caretaker_Sophie' is somewhat informal and less precise than the reference."
+      },
+      "combined_score": 0.7464602611350272
+    },
+    {
+      "question_id": "Q22",
+      "question": "Quels acteurs humains sont impliqués dans la phase de préparation de l'entraînement ?",
+      "answer": "Les acteurs humains impliqués dans la phase de préparation de l'entraînement sont :\n\n* Le cavalier Emma (Rider_Emma)\n* Le vétérinaire Dr Martin (Vet_DrMartin)\n* La personne chargée des soins Sophie (Caretaker_Sophie)\n\n(Phase de préparation de l'entraînement, qui est une phase clé avant le début d'une compétition équestre)",
+      "ground_truth": "Trois acteurs sont impliqués dans la phase de préparation : Emma (cavalière), Dr Martin (vétérinaire) et Sophie (soigneuse).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 12.43635082244873,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?actor\nWHERE {\n  ?training rdf:type horses:PreparationStage .\n  ?training horses:involvesActor ?actor .\n}",
+      "success": true,
+      "semantic_similarity": 0.8415650798528197,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately lists all the human actors involved in the training preparation phase as specified in the reference, using both their names and roles, which enhances clarity and relevance."
+      },
+      "combined_score": 0.9207825399264098
+    },
+    {
+      "question_id": "Q23",
+      "question": "Qui participe à la phase pré-compétition de l'entraînement ?",
+      "answer": "Les acteurs qui participent à la phase pré-compétition de l'entraînement sont :\n\n1. Manon (Rider_Manon) - elle est le cavalier\n2. Sophie (Caretaker_Sophie) - elle est le soigneur ou la personne chargée des soins",
+      "ground_truth": "Deux personnes participent à la phase pré-compétition : Manon (cavalière) et Sophie (soigneuse).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 11.799798011779785,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?actor\nWHERE {\n  ?training rdf:type horses:PreCompetitionStage .\n  ?training horses:involvesActor ?actor .\n}",
+      "success": true,
+      "semantic_similarity": 0.8606351190912255,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately identifies both participants, Manon and Sophie, and provides their roles, matching the reference perfectly."
+      },
+      "combined_score": 0.9303175595456128
+    },
+    {
+      "question_id": "Q24",
+      "question": "Quelle est la période de la saison 2026 ?",
+      "answer": "La période de la saison 2026 est déterminée par sa date de début et de fin.\n\n- La saison commence le **1er mars 2026**.\n- Elle se termine le **31 octobre 2026**.",
+      "ground_truth": "La saison 2026 s'étend du 1er mars 2026 au 31 octobre 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 12.482460021972656,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?seasonName ?seasonStart ?seasonEnd\nWHERE {\n  horses:Season_2026 rdf:type horses:CompetitiveSeason .\n  horses:Season_2026 horses:seasonName ?seasonName .\n  horses:Season_2026 horses:seasonStart ?seasonStart .\n  horses:Season_2026 horses:seasonEnd ?seasonEnd .\n}",
+      "success": true,
+      "semantic_similarity": 0.8576105580659503,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately states the start and end dates of the season 2026, matching the reference perfectly and providing all relevant information."
+      },
+      "combined_score": 0.9288052790329752
+    },
+    {
+      "question_id": "Q25",
+      "question": "Quels événements font partie de la saison 2026 ?",
+      "answer": "Je suis désolé, mais je n'ai pas trouvé d'informations sur les événements de la saison 2026 dans le graphe de connaissances.\n\nIl est possible que ces informations n'aient pas encore été ajoutées ou qu'elles ne soient pas disponibles. Je vous suggère de vérifier plus tard pour voir si des données ont été ajoutées à la base.",
+      "ground_truth": "Deux événements font partie de la saison 2026 : Event_SJ_01 (saut d'obstacles) et Event_Dressage_01 (dressage).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 13.099899768829346,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?event\nWHERE {\n  horses:Season_2026 horses:hasParticipation ?participation .\n  ?participation horses:hasHorse ?horse .\n  ?horse horses:CompetesIn ?event .\n}",
+      "success": true,
+      "semantic_similarity": 0.4796409382064051,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer does not provide any of the specific events mentioned in the reference and instead states a lack of information, which is incorrect and incomplete."
+      },
+      "combined_score": 0.23982046910320254
+    },
+    {
+      "question_id": "Q26",
+      "question": "Quelle est la date de l'événement Event_SJ_01 ?",
+      "answer": "La date de l'événement Event_SJ_01 est connue.\n\nVoici les informations disponibles :\n\n1. La date de l'événement : 12 avril 2026 (format ISO : 2026-04-12)",
+      "ground_truth": "L'événement Event_SJ_01 aura lieu le 12 avril 2026.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 8.427428722381592,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\n\nSELECT ?date\nWHERE {\n  horses:Event_SJ_01 horses:eventDate ?date .\n}",
+      "success": true,
+      "semantic_similarity": 0.8388270402560585,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer does not provide the specific date of the event, which is crucial information from the reference."
+      },
+      "combined_score": 0.41941352012802924
+    },
+    {
+      "question_id": "Q27",
+      "question": "Où se déroule l'événement de saut d'obstacles Event_SJ_01 ?",
+      "answer": "L'événement de saut d'obstacles (Event_SJ_01) se déroule à Saumur.\n\n* L'emplacement exact est : Saumur.",
+      "ground_truth": "L'événement Event_SJ_01 se déroule à Saumur.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 9.50442099571228,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?location\nWHERE {\n  horses:Event_SJ_01 horses:eventLocation ?location .\n}",
+      "success": true,
+      "semantic_similarity": 0.8350237551626629,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately states the location of the event as Saumur, which matches the reference. It includes all important information and is precise and relevant."
+      },
+      "combined_score": 0.9175118775813315
+    },
+    {
+      "question_id": "Q28",
+      "question": "Où se déroule l'événement de dressage Event_Dressage_01 ?",
+      "answer": "L'événement de dressage Event_Dressage_01 se déroule à Angers.\n\n* L'emplacement exact est : Angers (Maine-et-Loire)",
+      "ground_truth": "L'événement Event_Dressage_01 se déroule à Angers.",
+      "category": "attribute_retrieval",
+      "difficulty": "easy",
+      "time_seconds": 9.687624216079712,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?location\nWHERE {\n  horses:Event_Dressage_01 horses:eventLocation ?location .\n}",
+      "success": true,
+      "semantic_similarity": 0.922367968075307,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.9,
+        "accuracy": 0.9,
+        "overall": 0.93,
+        "reasoning": "The model answer correctly identifies the location as Angers, matching the reference. However, it lacks the additional detail of 'Maine-et-Loire' which is present in the reference, affecting completeness slightly."
+      },
+      "combined_score": 0.9261839840376536
+    },
+    {
+      "question_id": "Q29",
+      "question": "Quelle est la catégorie de l'événement Event_SJ_01 ?",
+      "answer": "La catégorie de l'événement Event_SJ_01 est :\n\n* Amateur 1 (équitation amateur)",
+      "ground_truth": "L'événement Event_SJ_01 est de catégorie Amateur 1.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "time_seconds": 7.780127048492432,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\n\nSELECT ?category\nWHERE {\n  horses:Event_SJ_01 horses:category ?category .\n}",
+      "success": true,
+      "semantic_similarity": 0.8810711935842092,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.9,
+        "accuracy": 0.95,
+        "overall": 0.95,
+        "reasoning": "The model answer correctly identifies the category as 'Amateur 1', which matches the reference. However, it adds 'équitation amateur', which, while relevant, is not explicitly mentioned in the reference, slightly affecting completeness."
+      },
+      "combined_score": 0.9155355967921046
+    },
+    {
+      "question_id": "Q30",
+      "question": "Quelle est la catégorie de l'événement Event_Dressage_01 ?",
+      "answer": "La catégorie de l'événement Event_Dressage_01 est :\n\n* Club Elite (cette catégorie correspond au dressage)",
+      "ground_truth": "L'événement Event_Dressage_01 est de catégorie Club Elite.",
+      "category": "attribute_retrieval",
+      "difficulty": "medium",
+      "time_seconds": 7.888977766036987,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\n\nSELECT ?category\nWHERE {\n  horses:Event_Dressage_01 horses:category ?category .\n}",
+      "success": true,
+      "semantic_similarity": 0.9113823550026883,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 0.9,
+        "accuracy": 0.95,
+        "overall": 0.95,
+        "reasoning": "The model answer correctly identifies the category as 'Club Elite', which matches the reference. It also adds relevant information about the category corresponding to dressage, enhancing completeness. However, the phrasing could be more concise."
+      },
+      "combined_score": 0.9306911775013441
+    },
+    {
+      "question_id": "Q31",
+      "question": "Quel classement Dakota et Emma ont-ils obtenu à Event_SJ_01 ?",
+      "answer": "Dakota a obtenu un classement de 2ème place à l'événement de saut d'obstacles (Event_SJ_01).\n\nEmma n'a pas de classement mentionné dans ce contexte, donc on ne peut pas préciser son résultat.\n\nIl y a au moins une autre chevaux qui ont participé à cet événement.",
+      "ground_truth": "Dakota et Emma ont obtenu la 2ème place à Event_SJ_01.",
+      "category": "multi_hop",
+      "difficulty": "hard",
+      "time_seconds": 13.085266828536987,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?rank\nWHERE {\n  horses:Event_SJ_01 horses:hasParticipation ?participation .\n  ?participation horses:hasHorse ?horse .\n  ?horse horses:hasName \"Dakota\" .\n  ?participation horses:rank ?rank .\n}",
+      "success": true,
+      "semantic_similarity": 0.7969128033800652,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.4,
+        "accuracy": 0.6,
+        "overall": 0.5,
+        "reasoning": "The model correctly identifies Dakota's placement but fails to mention that both Dakota and Emma achieved the 2nd place together, which is crucial information from the reference. Emma's lack of mention in the context of the ranking is a significant omission."
+      },
+      "combined_score": 0.6484564016900326
+    },
+    {
+      "question_id": "Q32",
+      "question": "Compare les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition.",
+      "answer": "Les fréquences d'entraînement entre la phase de préparation et la phase pré-compétition sont comparables.\n\n* La phase de préparation est entraînée avec une fréquence de 4 fois (deux fois identiques).\n* La phase pré-compétition est entraînée avec une fréquence de 3 fois (deux fois identiques).\n\nIl n'y a pas de différence significative entre les deux phases en termes de fréquence d'entraînement.",
+      "ground_truth": "La phase de préparation a une fréquence de 4 séances par semaine, tandis que la phase pré-compétition a une fréquence de 3 séances par semaine. La préparation est légèrement plus intensive en termes de fréquence.",
+      "category": "comparison",
+      "difficulty": "hard",
+      "time_seconds": 14.36933183670044,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?stageType ?frequency\nWHERE {\n  ?training rdf:type ?stageType .\n  FILTER(?stageType = horses:PreparationStage || ?stageType = horses:PreCompetitionStage) .\n  ?training horses:Frequency ?frequency .\n}",
+      "success": true,
+      "semantic_similarity": 0.7945129620139788,
+      "llm_judge_scores": {
+        "correctness": 0.2,
+        "completeness": 0.5,
+        "accuracy": 0.3,
+        "overall": 0.33,
+        "reasoning": "The model answer incorrectly states that there is no significant difference in frequency between the two phases, while the reference clearly indicates that the preparation phase has a higher frequency of 4 sessions compared to 3 in the pre-competition phase."
+      },
+      "combined_score": 0.5622564810069894
+    },
+    {
+      "question_id": "Q33",
+      "question": "Quelles sont les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée ?",
+      "answer": "Je suis désolé, mais je n'ai pas trouvé d'informations dans le graphe de connaissances qui permettent de répondre à votre question sur les différences entre les phases de préparation et de pré-compétition en termes de fréquence, intensité et durée.\n\nIl est possible que ces informations ne soient pas encore disponibles ou qu'elles n'aient pas été saisies dans la base de données. Si vous avez d'autres questions ou si vous souhaitez connaître des informations sur un autre sujet, je serais ravi de vous aider !",
+      "ground_truth": "La phase de préparation a 4 séances/semaine avec intensité modérée pendant 45min. La phase pré-compétition a 3 séances/semaine avec intensité élevée pendant 60min. La pré-compétition est plus intense et plus longue, mais moins fréquente.",
+      "category": "comparison",
+      "difficulty": "very_hard",
+      "time_seconds": 18.128713130950928,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?stage ?frequency ?intensity ?volume\nWHERE {\n  ?training rdf:type horses:PreparationStage ;\n             horses:Frequency ?frequency ;\n             horses:Intensity ?intensity ;\n             horses:Volume ?volume .\n  BIND(\"PreparationStage\" AS ?stage)\n}\nUNION\n{\n  ?training rdf:type horses:PreCompetitionStage ;\n             horses:Frequency ?frequency ;\n             horses:Intensity ?intensity ;\n             horses:Volume ?volume .\n  BIND(\"PreCompetitionStage\" AS ?stage)\n}",
+      "success": true,
+      "semantic_similarity": 0.6153374485582987,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer does not provide any information regarding the differences between the preparation and pre-competition phases, failing to address the question entirely."
+      },
+      "combined_score": 0.3076687242791494
+    },
+    {
+      "question_id": "Q34",
+      "question": "Compare les acteurs impliqués dans les phases de préparation et de pré-compétition.",
+      "answer": "Je suis désolé, mais je n'ai pas trouvé d'informations dans le graphe de connaissances pour comparer les acteurs impliqués dans les phases de préparation et de pré-compétition.\n\nIl est possible que ces informations ne soient pas encore disponibles ou qu'elles n'existent pas dans la base de données. Si vous avez besoin d'aide pour trouver des informations sur un autre sujet, je serais ravi de l'aider !",
+      "ground_truth": "La phase de préparation implique Emma (cavalière), Dr Martin (vétérinaire) et Sophie (soigneuse), soit 3 acteurs. La phase pré-compétition implique Manon (cavalière) et Sophie (soigneuse), soit 2 acteurs. Sophie est la seule personne commune aux deux phases. Emma et Dr Martin ne participent qu'à la préparation, tandis que Manon ne participe qu'à la pré-compétition.",
+      "category": "comparison",
+      "difficulty": "very_hard",
+      "time_seconds": 15.874631881713867,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?actor ?actorType ?trainingStage\nWHERE {\n  ?training rdf:type horses:PreparationStage, horses:PreCompetitionStage .\n  ?training horses:involvesActor ?actor .\n  ?actor rdf:type ?actorType .\n  FILTER(?actorType = horses:Rider || ?actorType = horses:Veterinarian || ?actorType = horses:Caretaker)\n  BIND(strafter(str(?training), '#') AS ?trainingStage)\n}",
+      "success": true,
+      "semantic_similarity": 0.498230772561903,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer does not provide any relevant information regarding the actors involved in the preparation and pre-competition phases, failing to address the question entirely."
+      },
+      "combined_score": 0.2491153862809515
+    },
+    {
+      "question_id": "Q35",
+      "question": "Donne une analyse complète de l'événement Event_SJ_01.",
+      "answer": "J'ai trouvé 96 résultat(s), mais je n'ai pas pu générer une réponse naturelle. Voici les données brutes: Contexte de la requête: Cette requête récupère des informations complètes sur l'événement Event_SJ_01, y compris la date, le lieu, la catégorie, les chevaux participants, leurs cavaliers associés, et ...",
+      "ground_truth": "L'événement Event_SJ_01 est une compétition de saut d'obstacles qui aura lieu le 12 avril 2026 à Saumur en catégorie Amateur 1, dans le cadre de la Saison 2026. Dakota, monté par Emma, y a obtenu la 2ème place. La préparation pour cet événement comprenait deux phases d'entraînement : une phase de préparation (4 séances/semaine, intensité modérée, 45min) avec Emma, Dr Martin et Sophie, et une phase pré-compétition (3 séances/semaine, intensité élevée, 60min) avec Manon et Sophie.",
+      "category": "multi_hop_complex",
+      "difficulty": "extreme",
+      "time_seconds": 22.800217151641846,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?eventName ?eventDate ?eventLocation ?category ?horseName ?rider ?sensorID ?position ?frequency\nWHERE {\n  horses:Event_SJ_01 horses:eventDate ?eventDate .\n  horses:Event_SJ_01 horses:eventLocation ?eventLocation .\n  horses:Event_SJ_01 horses:category ?category .\n  horses:Event_SJ_01 horses:hasParticipation ?participation .\n  ?participation horses:hasHorse ?horse .\n  ?horse horses:hasName ?horseName .\n  ?participation horses:hasRider ?rider .\n  ?sensor horses:isAttachedTo ?horse .\n  ?sensor horses:hasSensorID ?sensorID .\n  ?sensor rdf:type ?position .\n  FILTER(?position != horses:InertialSensors) .\n  ?sensor horses:hasSensorTime ?frequency .\n}",
+      "success": true,
+      "semantic_similarity": 0.4676605273336298,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer does not provide any relevant information about the event Event_SJ_01 and fails to address the specifics mentioned in the reference, such as the date, location, category, and results."
+      },
+      "combined_score": 0.2338302636668149
+    },
+    {
+      "question_id": "Q36",
+      "question": "Combien d'événements sportifs sont enregistrés dans le système ?",
+      "answer": "Le système enregistre un total de **5** événements sportifs.\n\nCes événements sont :\n1. Un événement de saut d'obstacles (Event_SJ_2026_01)\n2. Un événement de dressage (Event_DE_2026_02)\n3. Un événement de cross-country (Event_CC_2026_03)\n4. Un événement de concours complet (Event_CE_2026_04)\n5. Un événement de phase de pré-compétition (Event_PC_2026_05)",
+      "ground_truth": "Il y a 2 événements sportifs enregistrés dans le système : un événement de saut d'obstacles (Event_SJ_01) et un événement de dressage (Event_Dressage_01).",
+      "category": "aggregation",
+      "difficulty": "medium",
+      "time_seconds": 11.814423084259033,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT (COUNT(?event) AS ?numberOfEvents)\nWHERE {\n  ?event rdf:type horses:SportingEvent .\n}",
+      "success": true,
+      "semantic_similarity": 0.7994460441184938,
+      "llm_judge_scores": {
+        "correctness": 0.0,
+        "completeness": 0.0,
+        "accuracy": 0.0,
+        "overall": 0.0,
+        "reasoning": "The model answer states that there are 5 events recorded in the system, which is factually incorrect compared to the reference that specifies only 2 events. Additionally, the events listed in the model answer do not match those in the reference, leading to a complete lack of alignment with the provided information."
+      },
+      "combined_score": 0.3997230220592469
+    },
+    {
+      "question_id": "Q37",
+      "question": "Quels types d'événements sportifs sont disponibles dans l'ontologie ?",
+      "answer": "Les types d'événements sportifs disponibles dans l'ontologie sont:\n\n* Saut d'obstacles (CSO) : \n  - Event_SJ_2026_01\n  - Event_SJ_01\n* Dressage :\n  - Event_Dressage_2026_01\n  - Event_Dressage_01\n* Cross-country (CCE) :\n  - Event_Cross_2026_01\n\nChacun de ces événements est associé à une année spécifique, soit 2026, soit 01.",
+      "ground_truth": "Les événements sportifs dans l'ontologie incluent le saut d'obstacles (ShowJumping) et le dressage (Dressage).",
+      "category": "hierarchical",
+      "difficulty": "medium",
+      "time_seconds": 11.772049188613892,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?eventType\nWHERE {\n  ?eventType rdf:type horses:SportingEvent .\n}",
+      "success": true,
+      "semantic_similarity": 0.7583071876482859,
+      "llm_judge_scores": {
+        "correctness": 0.5,
+        "completeness": 0.5,
+        "accuracy": 0.6,
+        "overall": 0.53,
+        "reasoning": "The model answer includes additional events (cross-country) that are not mentioned in the reference, which affects correctness and completeness. While it correctly identifies show jumping and dressage, it introduces an event not present in the reference, leading to a lower score."
+      },
+      "combined_score": 0.644153593824143
+    },
+    {
+      "question_id": "Q38",
+      "question": "Pour quel objectif expérimental le capteur IMU_Withers_01 est-il utilisé ?",
+      "answer": "Le capteur IMU_Withers_01 est utilisé pour l'objectif expérimental suivant :\n\n1.  GaitClassif_01 (détection et classification du comportement d'allure)",
+      "ground_truth": "Le capteur IMU_Withers_01 est utilisé pour la classification de la démarche (GaitClassification).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 10.695839166641235,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?objective\nWHERE {\n  horses:IMU_Withers_01 horses:isUsedFor ?objective .\n}",
+      "success": true,
+      "semantic_similarity": 0.8959021740844085,
+      "llm_judge_scores": {
+        "correctness": 0.8,
+        "completeness": 0.7,
+        "accuracy": 0.75,
+        "overall": 0.75,
+        "reasoning": "The model answer correctly identifies the purpose of the IMU_Withers_01 sensor as related to gait classification, but it introduces a specific term 'GaitClassif_01' that is not present in the reference, which may lead to confusion. Additionally, it does not explicitly state that the sensor is used for 'classification de la démarche', which is a key part of the reference."
+      },
+      "combined_score": 0.8229510870422043
+    },
+    {
+      "question_id": "Q39",
+      "question": "Pour quel objectif expérimental le capteur IMU_CanonFore_01 est-il utilisé ?",
+      "answer": "Le capteur IMU_CanonFore_01 est utilisé pour détecter la fatigue.\n\nVoici les détails :\n\n* L'objectif expérimental est le **détecteur de fatigue** (FatigueDetection)",
+      "ground_truth": "Le capteur IMU_CanonFore_01 est utilisé pour la détection de fatigue (FatigueDetection).",
+      "category": "single_hop",
+      "difficulty": "medium",
+      "time_seconds": 10.9033682346344,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?objective\nWHERE {\n  horses:IMU_CanonFore_01 horses:isUsedFor ?objective .\n}",
+      "success": true,
+      "semantic_similarity": 0.9428922575194918,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately reflects the reference by stating that the sensor is used to detect fatigue, which aligns perfectly with the provided objective experimental goal."
+      },
+      "combined_score": 0.9714461287597459
+    },
+    {
+      "question_id": "Q40",
+      "question": "Quel est l'âge de Dakota ?",
+      "answer": "Je suis désolé, mais je n'ai pas trouvé d'information concernant l'âge de Dakota dans le contexte fourni.\n\nSi vous avez besoin de plus d'informations ou si vous souhaitez savoir comment j'ai pu trouver ces informations (même si ce n'est pas le cas), n'hésitez pas à me le faire savoir.",
+      "ground_truth": "L'information sur l'âge de Dakota n'est pas disponible dans le système.",
+      "category": "unanswerable",
+      "difficulty": "medium",
+      "time_seconds": 13.836799144744873,
+      "sparql_query": "PREFIX horses: <http://www.semanticweb.org/noamaadra/ontologies/2024/2/Horses#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n\nSELECT ?age\nWHERE {\n  ?horse rdf:type horses:Horse .\n  ?horse horses:hasName \"Dakota\" .\n  OPTIONAL { ?horse horses:hasAge ?age . }\n}",
+      "success": true,
+      "semantic_similarity": 0.7491990500523918,
+      "llm_judge_scores": {
+        "correctness": 1.0,
+        "completeness": 1.0,
+        "accuracy": 1.0,
+        "overall": 1.0,
+        "reasoning": "The model answer accurately reflects the lack of information about Dakota's age, matching the reference. It also provides a polite offer for further assistance, which adds to its completeness and relevance."
+      },
+      "combined_score": 0.874599525026196
+    }
+  ]
+}
