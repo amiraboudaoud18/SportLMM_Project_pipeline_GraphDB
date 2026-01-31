@@ -1,3 +1,0 @@
-rdflib
-requests
-ollama #ollama pull model support (here llama3.2)
