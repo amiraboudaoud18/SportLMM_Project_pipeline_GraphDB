@@ -2,8 +2,6 @@
 
 Equestrian knowledge-graph chatbot: **natural language → SPARQL → GraphDB → context → natural language answer**. Uses a local LLM (LM Studio / OpenAI-compatible) or OpenAI, with optional dual models (one for SPARQL, one for French answers).
 
-**Related repo:** [SportLMM_Project_Model_tests](https://github.com/yellowsmob/SportLMM_Project_Model_tests) — model and Graph RAG experiments tracker.
-
 ---
 
 ## Architecture (high level)
@@ -154,3 +152,4 @@ See **[evaluation_results/README.md](evaluation_results/README.md)** for a short
 ## License
 
 See repository settings. No additional license file is included by default.
+
